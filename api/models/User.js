@@ -6,7 +6,9 @@ var mongoose	= require( 'mongoose' ),
 
 var UserSchema = new Schema ({
 	email: 		{ type: String, required: true, unique: true },
-	password: 	{ type: String, required: true, select: false} 	
+	password: 	{ type: String, required: true, select: false},
+	isphotographer: false,
+	ispublisher: false	
 })
 
 //hash the pword of the user before saved

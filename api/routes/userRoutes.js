@@ -1,15 +1,15 @@
 var express 		= require( 'express' ),
-	apiRouter 		= express.Router(),
+	userapiRouter 	= express.Router(),
 	usersController = require( '../controllers/usersController'),
 	jwt				= require( 'jsonwebtoken' ),
 	mySpecialSecret = "paparazzi",
 	User 			= require( '../models/User');
 
-apiRouter.route('/users')
+userapiRouter.route('/')
 	.get(usersController.index)
 
 
-apiRouter.route('/authenticate')
+userapiRouter.route('/authenticate')
 	.post(function( req, res ){
 		console.log("trying to generate a JWT")
 	// finds one user
@@ -39,10 +39,10 @@ apiRouter.route('/authenticate')
 	})
 })
 
-apiRouter.route('/users')
+userapiRouter.route('/')
 	.post( usersController.create )
 
-apiRouter.use(function( req, res, next ){
+userapiRouter.use(function( req, res, next ){
 	var token = req.body.token || req.param( 'token' ) | req.headers['x-access-token']
 
 	if( token ){
@@ -62,14 +62,14 @@ apiRouter.use(function( req, res, next ){
 })
 
 
-apiRouter.route('/me')
+userapiRouter.route('/me')
 	.get(function( req, res) {
 		res.send( req.decoded )
 	})
 
-apiRouter.route('/users/:user_id')
+userapiRouter.route('/:user_id')
 	.get(usersController.show)
 	.put(usersController.update)
 	.delete(usersController.destroy)
 
-module.exports = apiRouter
+module.exports = userapiRouter

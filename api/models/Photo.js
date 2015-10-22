@@ -1,10 +1,10 @@
 var mongoose	= require( 'mongoose' ),
-	Schema 		= mongoose.Schema,
-	userSchema	= require( './User');
+	Schema 		= mongoose.Schema;
+	
 
 // creates an image
 
-	PhotoSchema = new Schema( {
+	PhotoSchema = new Schema({
 		title: {type: String, require: true},
 		caption: {type: String, require: true},
 		subject: String,
@@ -13,9 +13,9 @@ var mongoose	= require( 'mongoose' ),
 		created_at: Date
 	})
 
-PhotoSchema.pre( 'save', function( next ){
-	this.created_at = new Photo();
-	next();
-});
+// PhotoSchema.pre( 'save', function( next ){
+// 	this.created_at = new Photo();
+// 	next();
+// });
 
 module.exports = mongoose.model( 'Photo', PhotoSchema )

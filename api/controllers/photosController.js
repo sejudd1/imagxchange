@@ -1,4 +1,4 @@
-var Photo = require( '../models/User');
+var Photo = require( '../models/Photo');
 
 function index ( req, res ) {
 	//gets all photo
@@ -19,7 +19,7 @@ function create( req, res ) {
 	photo.datetaken		= req.body.datetaken
 
 	photo.save( function( err ) {
-		if( err ) res.send( err ){
+		if( err ) res.send 
 			res.json({success: true, message: "photo created"})
 	})
 }

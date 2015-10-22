@@ -1,6 +1,6 @@
 var express 		= require( 'express' ),
 	apiRouter 		= express.Router(),
-	usersController = require( '../controllers/usersController.js'),
+	usersController = require( '../controllers/usersController'),
 	jwt				= require( 'jsonwebtoken' ),
 	mySpecialSecret = "paparazzi",
 	User 			= require( '../models/User');
@@ -39,7 +39,7 @@ apiRouter.route('/users')
 	.post( usersController.create )
 
 apiRouter.use(function( req, res, next ){
-	var token = req.body.token || req.param( ' token' ) | req.headers['x-access-token']
+	var token = req.body.token || req.param( 'token' ) | req.headers['x-access-token']
 
 	if( token ){
 		jwt.verify( token, mySpecialSecret, function( err, decoded ){
@@ -51,7 +51,7 @@ apiRouter.use(function( req, res, next ){
 			}
 		})
 	} else {
-		res.status( 403 ).send({success: false, messge: "no token"})
+		res.status( 403 ).send({success: false, message: "no token"})
 	}
 
 	console.log("checks to see if user if logged in")

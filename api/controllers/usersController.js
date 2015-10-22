@@ -1,4 +1,4 @@
-var User = require( '../models/User')
+var User = require( '../models/User');
 
 function index( req, res ){
 	//gets all users
@@ -11,6 +11,7 @@ function index( req, res ){
 function create( req, res ){
 	//makes a single user
 	console.log("creates the user")
+	
 	var user = new User()
 
 	user.email 		= req.body.email
@@ -31,11 +32,10 @@ function create( req, res ){
 function show( req, res ){ 
 	
 	//gets a single user
-	User.findById(req.params.user_id, function ( err, user ) {
+	User.findById(req.params.user_id, function( err, user ) {
 		if( err ) res.send( err )
 			res.json( user )
 	})
-
 }
 
 function update( req, res ){
@@ -68,6 +68,7 @@ function destroy ( req, res ) {
 module.exports = {
 	index: index,
 	create: create,
+	show: show,
 	update: update,
 	destroy: destroy
 

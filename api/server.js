@@ -1,5 +1,5 @@
 var express 	= require( 'express' ),
-	app			= express (),
+	app			= express(),
 	bodyParser	= require( 'body-parser'),
 	morgan		= require( 'morgan' ),
 	port 		= process.env.PORT || 8080,

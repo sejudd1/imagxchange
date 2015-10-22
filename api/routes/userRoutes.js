@@ -5,6 +5,10 @@ var express 		= require( 'express' ),
 	mySpecialSecret = "paparazzi",
 	User 			= require( '../models/User');
 
+apiRouter.route('/users')
+	.get(usersController.index)
+
+
 apiRouter.route('/authenticate')
 	.post(function( req, res ){
 		console.log("trying to generate a JWT")
@@ -57,8 +61,6 @@ apiRouter.use(function( req, res, next ){
 	console.log("checks to see if user if logged in")
 })
 
-apiRouter.route('/users')
-	.get(usersController.index)
 
 apiRouter.route('/me')
 	.get(function( req, res) {

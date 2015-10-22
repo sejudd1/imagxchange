@@ -1,4 +1,4 @@
-var User = require( './models/User')
+var User = require( '../models/User')
 
 function index( req, res ){
 	//gets all users
@@ -19,7 +19,7 @@ function create( req, res ){
 	user.save(function( err ){
 		if(err){
 			if(err.code == 11000){
-				return res.json({success; false, message: "email already exists"})
+				return res.json({success: false, message: "email already exists"})
 			} else {
 				res.send( err )
 			}

@@ -4,6 +4,7 @@ var express 	= require( 'express' ),
 	morgan		= require( 'morgan' ),
 	port 		= process.env.PORT || 8080,
 	mongoose 	= require( 'mongoose' ),
+	apiRouter	= require( './routes/userRoutes' )
 	cors		= require( 'cors' );
 
 
@@ -14,9 +15,9 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 
-app.use(morgan('dev'))
+app.use(morgan( 'dev' ))
 
-//app.use('/api', apiRouter) //sends any get request with api prefix to the api router
+app.use('/api', apiRouter) //sends any get request with api prefix to the api router
 
 app.listen(port)
 console.log("listening on port" + port)

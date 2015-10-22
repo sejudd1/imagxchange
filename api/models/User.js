@@ -1,6 +1,6 @@
 var mongoose	= require( 'mongoose' ),
-	Schema		= mongoose.Schame,
-	bcrypt		= require( 'bcrypt-node.js' );
+	Schema		= mongoose.Schema,
+	bcrypt		= require( 'bcrypt-nodejs' );
 
 //makes a new User schema
 

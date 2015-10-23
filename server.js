@@ -1,13 +1,12 @@
-<<<<<<< HEAD
 var app = require( './api/index');
 
 
 // app.set('port', process.env.PORT || 8080 )
 
-var server = app.listen(app.get('port'), function(){
+//var server = app.listen(app.get('port'), function(){
 	// console.log("Server is listening on port" + port)
-});	
-=======
+//});	
+
 var express 		= require( 'express' ),
 	app				= express(),
 	bodyParser		= require( 'body-parser'),
@@ -20,7 +19,6 @@ var express 		= require( 'express' ),
 	path			= require( 'path');
 
 
-mongoose.connect( 'mongodb://localhost:27017/imagxchange')
 //links the server to the client static pages
 app.use(express.static(__dirname + '/client'))
 
@@ -38,6 +36,6 @@ app.get('*', function( req, res ){
 	res.sendFile(path.join(__dirname + '/client/index.html'));
 });
 
-app.listen(port)
-console.log("listening on port" + port)
->>>>>>> 21631089f5d1726e02bc319dfb70f8722f5ed3a1
+// app.listen(port)
+// console.log("listening on port" + port)
+

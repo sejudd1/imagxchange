@@ -78,8 +78,10 @@ function authFactory($http, $q, authTokenFactory){
 	}
 	// handles login
 	authFactory.login = function(email, password){
+		console.log("auth factory log in is running")
 		
-		return $http.post('http://localhost:8080/api/authenticate', {
+		
+		return $http.post('http://localhost:8080/api/users/authenticate', {
 			email: email,
 			password: password
 		}).then(function(response){

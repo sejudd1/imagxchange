@@ -33,7 +33,8 @@ UserSchema.pre('save', function(next){
 //compare incoming pwords with hashed pwords
 UserSchema.methods.comparePassword = function(password){
 	var user = this;
-	return bcryt.compareSync(password, user.password)
+	console.log(user)
+	return bcrypt.compareSync(password, user.password)
 }
 
 module.exports = mongoose.model('User', UserSchema)

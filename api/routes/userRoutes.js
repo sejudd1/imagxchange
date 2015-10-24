@@ -10,7 +10,9 @@ userapiRouter.route('/')
 
 
 userapiRouter.route('/authenticate')
-	.post(function( req, res ){
+
+	.post(function( req, res ) {
+
 		console.log("trying to generate a JWT")
 	// finds one user
 	User.findOne({
@@ -43,7 +45,8 @@ userapiRouter.route('/')
 	.post( usersController.create )
 
 userapiRouter.use(function( req, res, next ){
-	var token = req.body.token || req.param( 'token' ) | req.headers['x-access-token']
+
+	var token = req.body.token || req.param( 'token' ) || req.headers['x-access-token']
 
 	if( token ){
 		jwt.verify( token, mySpecialSecret, function( err, decoded ){

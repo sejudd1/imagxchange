@@ -10,7 +10,6 @@
   <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script type="text/javascript" src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="js/scripts/app.js"></script>
   <script type="text/javascript" src="js/controllers/mainController.js"></script>
   <script type="text/javascript" src="js/scripts/authFactories.js"></script>  
@@ -24,10 +23,10 @@
         <a class="navbar-brand" ui-sref="home">imagXchange</a>
       </div>
       <ul class="nav navbar-nav navbar-left">
-        <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="home" role="button">Home</a></li>
-        <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="contact" role="button">Contact</a></li>
-        <li ng-if="mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="gallery" role="button">Profile</a></li>
-        <li ng-if="mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="gallery" role="button">Gallery</a></li>
+        <li ng-if="!mainCtrl.loggedIn"><a ui-sref="contact">Contact</a></li>
+        <li ng-if="mainCtrl.loggedIn"><a ui-sref="profile">Profile</a></li>
+        <li ng-if="mainCtrl.loggedIn"><a ui-sref="gallery">Gallery</a></li>
+        <li ng-if="mainCtrl.loggedIn"><a ui-sref="photo">Photo</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-if="mainCtrl.loggedIn"><a>Hi {{mainCtrl.user.username}}</a></li>

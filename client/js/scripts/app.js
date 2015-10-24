@@ -43,6 +43,4 @@ function MainRouter($stateProvider, $urlRouterProvider){
 			templateUrl: 'templates/contact.html'
 		})
 
-
-
 }

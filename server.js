@@ -1,20 +1,8 @@
-<<<<<<< HEAD
-=======
-var app = require( './api/index');
-
-
-// app.set('port', process.env.PORT || 8080 )
-
-//var server = app.listen(app.get('port'), function(){
-	// console.log("Server is listening on port" + port)
-//});	
-
->>>>>>> upstream/master
 var express 		= require( 'express' ),
 	app				= express(),
+	app 			= require( './api/index'),
 	bodyParser		= require( 'body-parser'),
 	morgan			= require( 'morgan' ),
-	port 			= process.env.PORT || 8080,
 	mongoose 		= require( 'mongoose' ),
 	userapiRouter	= require( './api/routes/userRoutes' ),
 	photoapiRouter	= require( './api/routes/photoRoutes' ),
@@ -22,10 +10,9 @@ var express 		= require( 'express' ),
 	path			= require( 'path');
 
 
-<<<<<<< HEAD
+
 mongoose.connect( 'mongodb://localhost:27017/imagxchange')
-=======
->>>>>>> upstream/master
+
 //links the server to the client static pages
 app.use(express.static(__dirname + '/client'))
 
@@ -43,11 +30,3 @@ app.get('*', function( req, res ){
 	res.sendFile(path.join(__dirname + '/client/index.html'));
 });
 
-<<<<<<< HEAD
-app.listen(port)
-console.log("listening on port" + port)
-=======
-// app.listen(port)
-// console.log("listening on port" + port)
-
->>>>>>> upstream/master

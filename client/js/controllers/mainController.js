@@ -12,14 +12,12 @@ function MainController($state, authFactory, $rootScope){
 	vm.login = login
 	vm.logout = logout
 	vm.getUser = getUser
+	vm.error = null
 
-	$rootScope.$on('$stateChangeStart', function(event, next, current) {
+	$rootScope.$on('$stateChangeStart', function() {
 		vm.loggedIn = authFactory.isLoggedIn();	
-
-		authFactory.getUser()
-			.then(function(data) {
-				vm.user = data.data;
-			});	
+		getUser()
+		vm.error = null	
 	});	
 
 	function logout(){
@@ -36,10 +34,12 @@ function MainController($state, authFactory, $rootScope){
 	}
 
 	function signup(){
+		console.log("Hitting signup")
 		authFactory.signup(vm.user.username, vm.user.password)
 		.then(function(response){
 			if(response.data.success){
-				vm.login(vm.user.username, vm.user.password)
+				console.log("Signup is getting through")
+				vm.login()
 			} else {
 				vm.error = response.data.message
 			}

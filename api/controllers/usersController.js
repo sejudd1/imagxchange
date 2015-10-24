@@ -24,8 +24,9 @@ function create( req, res ){
 			} else {
 				res.send( err )
 			}
+		} else {
+			res.json({success: true, message: "user has been created"})
 		}
-		res.json({success: true, message: "user has been created"})
 	})
 }
 

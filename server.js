@@ -1,6 +1,6 @@
 var express 		= require( 'express' ),
 	app				= express(),
-	app 			= require( './api/index'),
+	port 			= process.env.PORT || 8080,
 	bodyParser		= require( 'body-parser'),
 	morgan			= require( 'morgan' ),
 	mongoose 		= require( 'mongoose' ),
@@ -11,7 +11,7 @@ var express 		= require( 'express' ),
 
 
 
-mongoose.connect( 'mongodb://localhost:27017/imagxchange')
+mongoose.connect( process.env.MONGOLAB_URI || 'mongodb://localhost:27017/imagxchange')
 
 //links the server to the client static pages
 app.use(express.static(__dirname + '/client'))
@@ -29,4 +29,9 @@ app.use('/api/photos', photoapiRouter)
 app.get('*', function( req, res ){
 	res.sendFile(path.join(__dirname + '/client/index.html'));
 });
+
+app.listen(port)
+console.log("listening on port" + port)
+
+module.exports = app;
 

@@ -86,6 +86,7 @@ function authFactory($http, $q, authTokenFactory){
 			password: password
 		}).then(function(response){
 			authTokenFactory.setToken(response.data.token)
+			console.log("token set")
 			return response
 		})
 	}

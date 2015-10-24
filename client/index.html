@@ -33,7 +33,7 @@
         <li ng-if="mainCtrl.loggedIn"><a>Hi {{mainCtrl.user.username}}</a></li>
         <li ng-if="!mainCtrl.loggedIn"><a ui-sref="login">Login</a></li>
         <li ng-if="!mainCtrl.loggedIn"><a ui-sref="signup">Sign up</a></li>
-        <li ng-if="mainCtrl.loggedIn"><a ng-click="userCtrl.logout()">Log out</a></li>  
+        <li ng-if="mainCtrl.loggedIn"><a ng-click="mainCtrl.logout()">Log out</a></li>  
       </ul>
     </div>
   </nav>

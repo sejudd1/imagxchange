@@ -53,13 +53,15 @@ function MainController($state, authFactory, $rootScope){
 	function login(){
 		console.log("Getting to login")
 		authFactory.login(vm.user.email, vm.user.password)
+		
 
 		.then(function(response){
 			if(response.data.success){
-				console.log("this is the error")
+				
 
 				$state.go("home")
 			} else {
+
 				
 				vm.error = response.data.message
 

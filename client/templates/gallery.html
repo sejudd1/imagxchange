@@ -1,3 +1,20 @@
 <div class="container">
-	<h1>imagXchange Gallery</h1>	
+	<h1>imagXchange Gallery</h1>
 </div>
+
+<main>
+	<section class="Gallery">
+		<ul id="photos">
+			<li ng-repeat="photo in photos.all" data-id="{{photo._id}}">
+				<strong>{{photo.title}}</strong>
+				<em>{{photo.caption}}</em>
+				<em>{{photo.subject}}</em>
+				<em>{{photo.location}}</em>
+				<em>{{photo.datetaken}}</em>
+				<button class='view' ng-click="photos.viewPhoto(photo)">View</button>
+				<button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button>
+			</li>
+		</ul>
+	</section>
+</main>
+

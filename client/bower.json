@@ -7,7 +7,7 @@
   ],
   "license": "ISC",
   "moduleType": [],
-  "homepage": "",
+  "homepage": "index.html",
   "private": true,
   "ignore": [
     "**/.*",

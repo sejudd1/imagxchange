@@ -42,5 +42,9 @@ function MainRouter($stateProvider, $urlRouterProvider){
 			url: '/contact',
 			templateUrl: 'templates/contact.html'
 		})
+		.state('photo', {
+			url: '/photo',
+			templateUrl: 'templates/photo.html'
+		})
 
 }

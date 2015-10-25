@@ -33,6 +33,37 @@ a:hover, a:focus {
 	position: relative;
 }
 
+.homeHeaderImg > #logo {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 50%;
+	/*margin-left: -115px;			*/
+	opacity: 1;
+	top: 300px;
+	animation-name: moveHeaderText;
+	animation-duration: 1.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease;
+
+}
+
+/*@keyframes moveHeaderImage {
+	0% {
+		left: -350px;
+		opacity: 0;			
+	}
+	10% {
+		left: -350px;
+		opacity: 0;			
+	}
+	100% {
+		left: 50%;
+		margin-left: -115px;			
+		opacity: 1;
+	}
+}*/
+
 .homeHeaderImg > h1 {
 	margin: 0;
 	padding: 0;
@@ -62,6 +93,7 @@ a:hover, a:focus {
 		opacity: 1;
 	}
 }
+
 .homeHeaderImg > ul > li:nth-child(1) {
 	position: absolute;
 	left: 40%;
@@ -95,11 +127,13 @@ a:hover, a:focus {
 }
 
 /*Login */
-
+.row  {
+	margin-top: 50px;
+	
+} 
 
 
 /*Sign Up*/
-
 
 .jumbotron {
 	background: rgba( 255, 255, 255, .3 );

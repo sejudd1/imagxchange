@@ -14,7 +14,7 @@ function PhotoController($http){
 	$http.get('http://localhost:8080/api/photos')
 		.then(function(response){
 		vm.photos = response.data
-		console.log(vm.photos)
+		console.log(vm)
 	})
 }
 

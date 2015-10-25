@@ -1,7 +1,7 @@
 {
   "name": "imagexchange",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "authors": [
     "Steve Judd <sejudd1@github.com>"
   ],

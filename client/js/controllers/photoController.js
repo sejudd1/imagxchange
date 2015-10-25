@@ -12,9 +12,9 @@ function PhotoController($http){
 	vm.photos = []
 
 	$http.get('http://localhost:8080/api/photos')
-	.then(function(response){
+		.then(function(response){
 		vm.photos = response.data
-		console.log(response.data)
+		console.log(vm.photos)
 	})
 }
 

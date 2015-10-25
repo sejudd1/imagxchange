@@ -15,7 +15,7 @@ function create( req, res ) {
 	photo.title			= req.body.title
 	photo.caption		= req.body.caption
 	photo.subject		= req.body.subject
-	photo.user			= req.body.global.username
+	//photo.user			= req.body.global.username
 	photo.location		= req.body.location
 	photo.datetaken		= req.body.datetaken
 

@@ -23,6 +23,14 @@ app.use(bodyParser.json());
 
 app.use(morgan( 'dev' ))
 
+//sets the global user
+
+app.use( function ( req, res, next ){
+	console.log( global.user )
+	global.user = req.user;
+	next()
+});
+
 app.use('/api/users', userapiRouter) //sends any get request with api prefix to the api router
 app.use('/api/photos', photoapiRouter)
 

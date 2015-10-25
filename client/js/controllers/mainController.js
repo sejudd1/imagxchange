@@ -1,10 +1,11 @@
-angular.module('imagXchange')
-
-.controller('MainController', MainController)
+angular
+	.module('imagXchange')
+	.controller('MainController', MainController)
 
 MainController.$inject = ['$state', 'authFactory', '$rootScope']
 
 function MainController($state, authFactory, $rootScope){
+	
 	var vm = this
 	vm.user = {}
 	vm.loggedIn = null

@@ -12,6 +12,7 @@
   <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="js/scripts/app.js"></script>
   <script type="text/javascript" src="js/controllers/mainController.js"></script>
+  <script type="text/javascript" src="js/controllers/photoController.js"></script>
   <script type="text/javascript" src="js/scripts/authFactories.js"></script>  
   <script type="text/javascript" src="js/scripts/buy.js"></script>  
 
@@ -34,6 +35,10 @@
         <li ng-if="!mainCtrl.loggedIn"><a ui-sref="signup">Sign up</a></li>
         <li ng-if="mainCtrl.loggedIn"><a ng-click="mainCtrl.logout()">Log out</a></li>  
       </ul>
+      <div ng-controller="PhotoController as photoCtrl">
+      </div>
+
+
     </div>
   </nav>
   

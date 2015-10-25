@@ -5,18 +5,21 @@ angular
 photosFactory.$inject = ['$http']
 
 function photosFactory($http){
+	
 	var photosFactory = {}
 
+	var baseUrl = "http://localhost:8080/api/photos"
+
 	photosFactory.index = function(){
-		return $http.get('https://localhost:3000/photos')//does their need to be a /api/photos here?
+		return $http.get(baseUrl)//does their need to be a /api/photos here?
 	}
 
 	photosFactory.create = function(photo){
-		return $http.post('https://localhost:3000/photos', photo)
+		return $http.post(baseUrl, photo)
 	}
 
 	photosFactory.destroy = function(photo){
-		return $http.delete('https://localhost:3000/photos' + photo.id)
+		return $http.delete(baseUrl + photo.id)
 	}
 
 	return photosFactory

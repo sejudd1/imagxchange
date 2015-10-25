@@ -95,6 +95,7 @@ function authFactory($http, $q, authTokenFactory){
 
 		return $http.post('http://localhost:8080/api/users', {
 
+			username: username,
 			email: email,
 			password: password
 

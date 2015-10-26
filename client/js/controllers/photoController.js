@@ -13,6 +13,7 @@ function PhotosController($http){
 	vm.newPhoto = {}
 	vm.$http = $http
 	vm.getPhotos()
+	vm.viewPhotos
 }
 
 //gets all photos 
@@ -26,7 +27,22 @@ PhotosController.prototype.getPhotos = function() {
 			vm.all = response.data
 			console.log(response)
 			console.log(vm.all)
+	})
+}
+
+PhotosController.prototype.viewPhotos = function(id) {
+	console.log("Working")
+
+	var vm = this
+
+	// console.log(vm)
+
+	vm.$http
+		.get( "http://localhost:8080/api/photos/" + id )
+		.then( response => {
+			console.log(response)
 		})
+
 }
 
 

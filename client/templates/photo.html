@@ -3,7 +3,9 @@
 	<main>
 		<section class="photo">
 			<ul id="photo">
-				<li ng-model="photo in photos.all" data-id="{{photo._id}}">
+				<li ng-model="photo in photoCtrl" data-id="{{photo._id}}">
+					{{2+2}}
+
 					<strong>{{photo.title}}</strong>
 					<em>{{photo.caption}}</em>
 					<em>{{photo.subject}}</em>

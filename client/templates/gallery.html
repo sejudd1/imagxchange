@@ -3,20 +3,20 @@
 </div>
 
 
-<div class="container"
-<ul ng-repeat="photo in photoCtrl.all">
+<div class="container">
+	<ul ng-repeat="photo in photoCtrl.all">
 
-	<li>Title: {{photo.title}}</li>
-	<li>Caption: {{photo.caption}}</li>
-	<li>Subject: {{photo.subject}}</li>
-	<li>Location: {{photo.location}}</li>
-	<li>Date take: {{photo.datetaken}}</li>
-	<li>Current price: {{photo.price}}</li>
-	<li>Photo id: {{photo._id}}</li>
+		<li>Title: {{photo.title}}</li>
+		<li>Caption: {{photo.caption}}</li>
+		<li>Subject: {{photo.subject}}</li>
+		<li>Location: {{photo.location}}</li>
+		<li>Date take: {{photo.datetaken}}</li>
+		<li>Current price: {{photo.price}}</li>
+		<li>Photo id: {{photo._id}}</li>
 
-	<button class='view' ng-click="photoCtrl.viewPhotos(photo._id)">View</button>
-	<!-- <button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button> -->
+		<button class='view' ng-click="photoCtrl.viewPhotos(photo._id)">View</button>
+		<!-- <button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button> -->
 
-</ul>
-<br>
+	</ul>
+	<br>
 </div>

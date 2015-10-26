@@ -2,10 +2,11 @@ angular
 	.module('imagXchange')
 	.controller('PhotosController', PhotosController);
 //inject the $http
+PhotosController.$inject = [ '$http' ]
 //PhotosController.$inject = [ 'photosFactory' ]
 
 //refer to the photo module
-function PhotosController($http){
+function PhotosController( $http ){
 	
 	var vm = this
 
@@ -13,11 +14,13 @@ function PhotosController($http){
 	vm.newPhoto = {}
 	vm.$http = $http
 	vm.getPhotos()
-	vm.viewPhotos
+	//vm.viewPhotos
 }
 
 //gets all photos 
 PhotosController.prototype.getPhotos = function() {
+
+	console.log("got here")
 
 	var vm = this
 

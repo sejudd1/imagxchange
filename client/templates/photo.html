@@ -1,20 +1,22 @@
 <div class="container">
-	<h1>imagXchange Photo</h1>
-	<main>
-		<section class="photo">
-			<ul id="photo">
-				<li ng-model="photo in photoCtrl" data-id="{{photo._id}}">
-					{{2+2}}
+	<h1>imagXchange Gallery</h1>
+</div>
 
-					<strong>{{photo.title}}</strong>
-					<em>{{photo.caption}}</em>
-					<em>{{photo.subject}}</em>
-					<em>{{photo.location}}</em>
-					<em>{{photo.datetaken}}</em>
-					<button class='view' ng-click="photos.viewPhoto(photo)">View</button>
-					<button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button>
-				</li>
-			</ul>
-		</section>
-	</main>
+
+<div class="container">
+	<ul ng-model="photoCtrl.photo">
+
+		<li>Title: {{2+2}}</li>
+		<li>Caption: {{caption}}</li>
+		<li>Subject: {{photoCtrl.photo.subject}}</li>
+		<li>Location: {{photoCtrl.photo.location}}</li>
+		<li>Date take: {{photoCtrl.photo.datetaken}}</li>
+		<li>Current price: {{photoCtrl.photo.price}}</li>
+		<li>Photo id: {{photoCtrl.photo._id}}</li>
+
+		<button class='view' ng-click="photoCtrl.viewPhotos(photo._id)">View</button>
+		<!-- <button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button> -->
+
+	</ul>
+	<br>
 </div>

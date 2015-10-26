@@ -77,21 +77,30 @@ function authFactory($http, $q, authTokenFactory){
 		return $http.get('http://localhost:8080/api/users')
 	}
 	// handles login
-	authFactory.login = function(username, password){
-		return $http.post('http://localhost:8080/api/authenticate', {
-			username: username,
+	authFactory.login = function(email, password){
+		console.log("auth factory log in is running")
+		
+		
+		return $http.post('http://localhost:8080/api/users/authenticate', {
+			email: email,
 			password: password
 		}).then(function(response){
 			authTokenFactory.setToken(response.data.token)
+			console.log("token set")
 			return response
 		})
 	}
 
-	authFactory.signup = function(username, password){
+	authFactory.signup = function(email, password){
+
 		return $http.post('http://localhost:8080/api/users', {
+
 			username: username,
+			email: email,
 			password: password
+
 		})
+
 	}
 
 	// handles logout

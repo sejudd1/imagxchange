@@ -7,8 +7,8 @@ var mongoose	= require( 'mongoose' ),
 var UserSchema = new Schema ({
 	email: 		{ type: String, required: true, unique: true },
 	password: 	{ type: String, required: true, select: false},
-	isphotographer: false,
-	ispublisher: false	
+	isphotographer: { type: Boolean,  default: 0 },
+	ispublisher: { type: Boolean,  default: 0 }
 })
 
 //hash the pword of the user before saved
@@ -33,7 +33,8 @@ UserSchema.pre('save', function(next){
 //compare incoming pwords with hashed pwords
 UserSchema.methods.comparePassword = function(password){
 	var user = this;
-	return bcryt.compareSync(password, user.password)
+	console.log(user)
+	return bcrypt.compareSync(password, user.password)
 }
 
 module.exports = mongoose.model('User', UserSchema)

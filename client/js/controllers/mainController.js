@@ -1,13 +1,14 @@
-angular.module('imagXchange')
-
-.controller('MainController', MainController)
+angular
+	.module('imagXchange')
+	.controller('MainController', MainController)
 
 MainController.$inject = ['$state', 'authFactory', '$rootScope']
 
 function MainController($state, authFactory, $rootScope){
+	
 	var vm = this
 	vm.user = {}
-	vm.loggedIn = authFactory.isLoggedIn()
+	vm.loggedIn = null
 	vm.signup = signup
 	vm.login = login
 	vm.logout = logout
@@ -35,24 +36,36 @@ function MainController($state, authFactory, $rootScope){
 
 	function signup(){
 		console.log("Hitting signup")
-		authFactory.signup(vm.user.username, vm.user.password)
+		authFactory.signup(vm.user.email, vm.user.password)
+
 		.then(function(response){
+			
+
 			if(response.data.success){
-				console.log("Signup is getting through")
+				
 				vm.login()
 			} else {
+
 				vm.error = response.data.message
 			}
 		})
 	}
 
 	function login(){
-		authFactory.login(vm.user.username, vm.user.password)
+		console.log("Getting to login")
+		authFactory.login(vm.user.email, vm.user.password)
+		
+
 		.then(function(response){
 			if(response.data.success){
+				
+
 				$state.go("home")
 			} else {
+
+				
 				vm.error = response.data.message
+
 			}
 		})
 	}

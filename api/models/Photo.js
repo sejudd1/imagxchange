@@ -8,8 +8,11 @@ var mongoose	= require( 'mongoose' ),
 		title: {type: String, require: true},
 		caption: {type: String, require: true},
 		subject: String,
+		user: String,
 		location: String,
 		datetaken: Date,
+		startingprice: Number,
+		currentprice: Number,
 		created_at: Date
 	})
 

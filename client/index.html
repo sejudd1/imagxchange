@@ -12,6 +12,7 @@
   <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="js/scripts/app.js"></script>
   <script type="text/javascript" src="js/controllers/mainController.js"></script>
+  <script type="text/javascript" src="js/controllers/photoController.js"></script>
   <script type="text/javascript" src="js/scripts/authFactories.js"></script>  
   <script type="text/javascript" src="js/scripts/buy.js"></script>
   <script src="ng-file-upload-shim(.min).js"></script> <!-- for no html5 browsers support -->
@@ -34,13 +35,17 @@
         <li ng-if="mainCtrl.loggedIn"><a>Hi {{mainCtrl.user.username}}</a></li>
         <li ng-if="!mainCtrl.loggedIn"><a ui-sref="login">Login</a></li>
         <li ng-if="!mainCtrl.loggedIn"><a ui-sref="signup">Sign up</a></li>
-        <li ng-if="mainCtrl.loggedIn"><a ng-click="userCtrl.logout()">Log out</a></li>  
+        <li ng-if="mainCtrl.loggedIn"><a ng-click="mainCtrl.logout()">Log out</a></li>  
       </ul>
     </div>
+
+
   </nav>
+
+
   
 
-  <div ui-view></div>
+<div ui-view ng-controller="PhotosController as photoCtrl"></div>
   
 <!-- footer here -->
 <footer>

@@ -6,15 +6,15 @@
 <div class="container">
 	<ul ng-model="photoCtrl.photo">
 
-		<li>Title: {{2+2}}</li>
-		<li>Caption: {{caption}}</li>
+		<li>Title: {{photoCtrl.photo.title}}</li>
+		<li>Caption: {{photoCtrl.photo.caption}}</li>
 		<li>Subject: {{photoCtrl.photo.subject}}</li>
 		<li>Location: {{photoCtrl.photo.location}}</li>
 		<li>Date take: {{photoCtrl.photo.datetaken}}</li>
 		<li>Current price: {{photoCtrl.photo.price}}</li>
 		<li>Photo id: {{photoCtrl.photo._id}}</li>
 
-		<button class='view' ng-click="photoCtrl.viewPhotos(photo._id)">View</button>
+		<button class='view' ng-click="photoCtrl.viewPhotos(photo._id)">BUY</button>
 		<!-- <button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button> -->
 
 	</ul>

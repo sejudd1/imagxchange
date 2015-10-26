@@ -6,13 +6,17 @@
 <div class="container"
 <ul ng-repeat="photo in photoCtrl.all">
 
-	<li>{{photo.title}}</li>
-	<li>{{photo.caption}}</li>
-	<li>{{photo.subject}}</li>
-	<li>{{photo.location}}</li>
-	<li>{{photo.datetaken}}</li>
-	<li>{{photo.price}}</li>
-	<button class='view' ng-click="photos.viewPhoto(photo)">View</button>
-	<button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button>
+	<li>Title: {{photo.title}}</li>
+	<li>Caption: {{photo.caption}}</li>
+	<li>Subject: {{photo.subject}}</li>
+	<li>Location: {{photo.location}}</li>
+	<li>Date take: {{photo.datetaken}}</li>
+	<li>Current price: {{photo.price}}</li>
+	<li>Photo id: {{photo._id}}</li>
+
+	<button class='view' ng-click="photoCtrl.viewPhotos(photo._id)">View</button>
+	<!-- <button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button> -->
+
 </ul>
+<br>
 </div>

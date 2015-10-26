@@ -46,5 +46,10 @@ function MainRouter($stateProvider, $urlRouterProvider){
 			url: '/photo',
 			templateUrl: 'templates/photo.html'
 		})
+		.state('photos', {
+		 	url: '/photos/:id',
+		 	templateUrl: 'templates/photo.html'
+		})
+
 
 }

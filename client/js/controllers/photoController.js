@@ -1,22 +1,34 @@
 angular
 	.module('imagXchange')
-	.controller('PhotoController', PhotoController);
+	.controller('PhotosController', PhotosController);
 //inject the $http
-//PhotoController.$inject = [ 'photosFactory', ]
+//PhotosController.$inject = [ 'photosFactory' ]
 
 //refer to the photo module
-function PhotoController($http){
-
+function PhotosController($http){
+	
 	var vm = this
 
 	vm.photos = []
-
-	$http.get('http://localhost:8080/api/photos')
-		.then(function(response){
-		vm.photos = response.data
-		console.log(vm)
-	})
+	vm.newPhoto = {}
+	vm.$http = $http
+	vm.getPhotos()
 }
+
+//gets all photos 
+PhotosController.prototype.getPhotos = function() {
+
+	var vm = this
+
+	vm.$http
+		.get( "http://localhost:8080/api/photos" )
+		.then( response => {
+			vm.all = response.data
+			console.log(response)
+			console.log(vm.all)
+		})
+}
+
 
 
 

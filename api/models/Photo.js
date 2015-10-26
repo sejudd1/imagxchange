@@ -11,6 +11,8 @@ var mongoose	= require( 'mongoose' ),
 		user: String,
 		location: String,
 		datetaken: Date,
+		startingprice: Number,
+		currentprice: Number,
 		created_at: Date
 	})
 

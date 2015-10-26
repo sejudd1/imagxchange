@@ -3,27 +3,16 @@
 </div>
 
 
-<div ng-controller="PhotoController as photos"> </div>
-	{{2+2}}
-	{{vm}}
+<div class="container"
+<ul ng-repeat="photo in photoCtrl.all">
 
-<!-- <main>
-	<section class="Gallery">
-		<ul id="photos">
-			<li ng-repeat="photo in photoCtrl.photos">
-				<strong>Test{{photo}}</strong>
-				{{2+2}}
-				<em>{{photo.caption}}</em>
-				<em>{{photo.subject}}</em>
-				<em>{{photo.location}}</em>
-				<em>{{photo.datetaken}}</em>
-				
-			</li>
-
-		</ul>
-		<button class='view' ng-click="photos.viewPhoto(photo)">View</button>
-				<button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button>
-	</section>
-</main>
-
- -->
+	<li>{{photo.title}}</li>
+	<li>{{photo.caption}}</li>
+	<li>{{photo.subject}}</li>
+	<li>{{photo.location}}</li>
+	<li>{{photo.datetaken}}</li>
+	<li>{{photo.price}}</li>
+	<button class='view' ng-click="photos.viewPhoto(photo)">View</button>
+	<button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button>
+</ul>
+</div>

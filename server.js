@@ -11,7 +11,9 @@ var express 		= require( 'express' ),
 	//define route handler
 	http			= require( 'http' ).Server(app),
 	//define twitter handler
-	Twit            = require( 'twit' );
+	Twit            = require( 'twit' ),
+	io				= require( 'socket.io' )(http),
+	stream;
 	
 
 var twitter	= new Twit({
@@ -21,7 +23,7 @@ var twitter	= new Twit({
 	access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var stream = twitter.stream('statuses/filter', { track: 'javascript' });
+var stream = twitter.stream('statuses/filter', { track: 'george clooney' });
 
 
 
@@ -54,19 +56,15 @@ app.get('*', function( req, res ){
 
 //socket io app.get function
 app.get('/', function(req, res){
-	res.send('<h1>Hello World</h1>');
+	res.sendfile('index.html');
 });
 
-http.listen(3000, function(){
-	console.log('listening on *:3000');
+http.listen(port, function(){
+	console.log('listening on :' + port);
 });
-
-server.listen(port)
-console.log("Server started on " + port);
-var io = require('socket.io')(server);
 
 //setting up server side websocket for twitter
-io.on('connect', function(socket) {
+io.on('connection', function(socket) {
 	stream.on('tweet', function(tweet) {
 		socket.emit('tweets', tweet);
 	});

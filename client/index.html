@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="./bower_components/angular/angular.min.js"></script>
   <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/socket.io-client/socket.io.js"></script>
   <script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="js/scripts/app.js"></script>
@@ -15,10 +16,10 @@
   <script type="text/javascript" src="js/controllers/photoController.js"></script>
   <script type="text/javascript" src="js/scripts/authFactories.js"></script>  
   <script type="text/javascript" src="js/scripts/buy.js"></script>
-  <script src="ng-file-upload-shim(.min).js"></script> <!-- for no html5 browsers support -->
-  <script src="ng-file-upload(.min).js"></script>
-  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
+  <script src="ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+  <script src="ng-file-upload.min.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
 
 </head>
 <body ng-app="imagXchange" ng-controller="MainController as mainCtrl">
@@ -45,6 +46,7 @@
 <div ui-view ng-controller="PhotosController as photoCtrl"></div>
 
 <div id="tweet-container"></div>
+
  <script type="text/javascript">
   var socket = io();
     socket.on('connect', function() {

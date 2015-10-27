@@ -3,7 +3,7 @@ angular
 	.controller('PhotosController', PhotosController);
 //inject the $http
 PhotosController.$inject = [ '$http' ]
-//PhotosController.$inject = [ 'photosFactory' ]
+//PhotoController.$inject = [ 'photosFactory' ]
 
 //refer to the photo module
 function PhotosController( $http ){

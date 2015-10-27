@@ -52,9 +52,6 @@ app.get('/', function(req, res){
 	res.sendfile('index.html');
 });
 
-http.listen(port, function(){
-	console.log('listening on :' + port);
-});
 
 //setting up server side websocket for twitter
 io.on('connection', function(socket) {

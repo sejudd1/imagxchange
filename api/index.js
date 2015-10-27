@@ -11,8 +11,8 @@ var express 		= require( 'express' ),
 	http			= require( 'http' ).Server(app),
 	//define twitter handler
 	Twit            = require( 'twit' ),
-	io				= require( 'socket.io' )(http),
-	stream;
+	io				= require( 'socket.io' )(http);
+	
 
 var twitter	= new Twit({
 consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -61,6 +61,7 @@ io.on('connection', function(socket) {
 	
 	//tiddy up tweet data
 	stream.on('tweet', function (tweet) {
+		console.log("magic tweets");
 		var data = {};
 			data.name = tweet.user.name;
 			data.screen_name = tweet.user.screen_name;
@@ -70,6 +71,7 @@ io.on('connection', function(socket) {
 			// setTimeout(function) {
 			// 	socket.disconnect("Die")
 			// }, 3000);
+	
 	});
   });
 });

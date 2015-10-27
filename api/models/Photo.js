@@ -11,8 +11,8 @@ var mongoose	= require( 'mongoose' ),
 		user: String,
 		location: String,
 		datetaken: Date,
-		startingprice: Number,
-		currentprice: Number,
+		startingprice: {type: Number, require: true},
+		currentprice: {type: Number, require: true},
 		created_at: Date
 	})
 

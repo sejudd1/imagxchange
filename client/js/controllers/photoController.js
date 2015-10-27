@@ -15,6 +15,7 @@ function PhotosController( $state, $http ){
 	vm.newPhoto = {}
 	vm.$http = $http
 	vm.getPhotos()
+
 	
 }
 
@@ -49,14 +50,29 @@ PhotosController.prototype.viewPhotos = function(id) {
 
 			console.log(vm.photo)
 
-
 		window.location.href = "#/photos/" + response.data._id
-
-
 
 		})
 
+}
 
+PhotosController.prototype.buyPhoto = function(id) {
+	console.log("buy button is hitting")
+
+	var vm = this
+
+	console.log(vm.photo.currentprice)
+
+	if (vm.photo.currentprice >= vm.photo.startingprice){
+	
+		vm.photo.currentprice = (vm.photo.currentprice + 1)
+
+		console.log(vm.photo.currentprice)	
+
+	// return $http.post( "http://localhost:8080/api/photos/" + id,
+	// vm.photo.currentprice
+
+	}
 }
 
 

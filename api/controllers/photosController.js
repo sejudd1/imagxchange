@@ -18,6 +18,9 @@ function create( req, res ) {
 	//photo.user			= req.body.global.username
 	photo.location		= req.body.location
 	photo.datetaken		= req.body.datetaken
+	photo.startingprice	= req.body.startingprice
+	photo.currentprice	= req.body.currentprice
+
 
 	photo.save( function( err ) {
 		if( err ) res.send 

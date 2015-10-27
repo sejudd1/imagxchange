@@ -9,17 +9,17 @@ var express 		= require( 'express' ),
 	cors			= require( 'cors' ),
 	path			= require( 'path');
 	http			= require( 'http' ).Server(app),
-	//define twitter handler
-	Twit            = require( 'twit' ),
-	io				= require( 'socket.io' )(http),
-	stream;
+	// //define twitter handler
+	// Twit            = require( 'twit' ),
+	// io				= require( 'socket.io' )(http);
 
-var twitter	= new Twit({
-consumer_key: process.env.TWITTER_CONSUMER_KEY,
-consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-access_token: process.env.TWITTER_ACCESS_TOKEN,
-access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-});
+
+// var twitter	= new Twit({
+// consumer_key: process.env.TWITTER_CONSUMER_KEY,
+// consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+// access_token: process.env.TWITTER_ACCESS_TOKEN,
+// access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+// });
 
 
 mongoose.connect( process.env.MONGOLAB_URI || 'mongodb://localhost:27017/imagxchange')
@@ -52,26 +52,27 @@ app.get('/', function(req, res){
 
 
 //setting up server side websocket for twitter
-io.on('connection', function(socket) {
-	console.log('logon attempt')
-	socket.on('tweet', function(tweet) {
-		socket.emit('tweets', tweet);
+// io.on('connection', function(socket) {
+// 	console.log('logon attempt')
+// 	socket.on('tweet', function(tweet) {
+// 		socket.emit('tweets', tweet);
 
-	var stream = twitter.stream('statuses/filter', { track: 'george clooney' });
+// 	var stream = twitter.stream('statuses/filter', { track: 'george clooney' });
 	
-	//tiddy up tweet data
-	stream.on('tweet', function (tweet) {
-		var data = {};
-			data.name = tweet.user.name;
-			data.screen_name = tweet.user.screen_name;
-			data.text = tweet.text;
-			data.user_profile_image = tweet.user.profile_image_url;
-			socket.emit('tweets', data);
-			// setTimeout(function) {
-			// 	socket.disconnect("Die")
-			// }, 3000);
-	});
-  });
-});
+// 	//tiddy up tweet data
+// 	stream.on('tweet', function (tweet) {
+// 		var data = {};
+// 			data.name = tweet.user.name;
+// 			data.screen_name = tweet.user.screen_name;
+// 			data.text = tweet.text;
+// 			data.user_profile_image = tweet.user.profile_image_url;
+// 			socket.emit('tweets', data);
+// 			// setTimeout(function) {
+// 			// 	socket.disconnect("Die")
+// 			// }, 3000);
+// 	console.log(data)
+// 	});
+//   });
+// });
 
 module.exports = app;

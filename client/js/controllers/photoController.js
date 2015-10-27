@@ -70,7 +70,7 @@ PhotosController.prototype.buyPhoto = function(id) {
 		console.log(vm.photo.currentprice)	
 
 	// return $http.post( "http://localhost:8080/api/photos/" + id,
-	// 	vm.photo.currentprice: currentprice
+	// vm.photo.currentprice
 
 	}
 }

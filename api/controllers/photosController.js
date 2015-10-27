@@ -41,9 +41,9 @@ function update( req, res ) {
 	Photo.findById( req.params.photo_id, function( err, photo) {
 		if( err ) res.send( err )
 
-		if( req.body.title ) photo.title 	= req.body.title
-		if( req.body.price ) photo.price 	= req.body.price
-		if( req.body.date ) photo.date		= req.body.date
+		if( req.body.title ) photo.title 		= req.body.title
+		if( req.body.price ) photo.currentprice = req.body.currentprice
+		if( req.body.date ) photo.date			= req.body.date
 
 		photo.save( function( err ) {
 			if( err ) res.send( err )

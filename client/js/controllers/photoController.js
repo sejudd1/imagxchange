@@ -61,17 +61,18 @@ PhotosController.prototype.buyPhoto = function(id) {
 
 	var vm = this
 
-	console.log(vm.photo.currentprice)
+	console.log(id)
 
 	if (vm.photo.currentprice >= vm.photo.startingprice){
 	
-		vm.photo.currentprice = (vm.photo.currentprice + 1)
+		var newprice = (vm.photo.currentprice + 1)
+		vm.photo.currentprice = newprice
+		console.log(newprice)	
 
-		console.log(vm.photo.currentprice)	
+	return $http.patch( "http://localhost:8080/api/photos/" + id,
+	photo.currentprice: newprice
 
-	// return $http.post( "http://localhost:8080/api/photos/" + id,
-	// vm.photo.currentprice
-
+	// })
 	}
 }
 

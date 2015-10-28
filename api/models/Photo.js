@@ -28,22 +28,20 @@ PhotoSchema.methods.counterStart = function() {
 				} else {
 				photo.currentprice = (photo.currentprice - 1) 
 
-
 				console.log("set intervial working")
 				console.log( photo.currentprice )
 
 				photo.pricehistory.push(photo.currentprice)
 
 				photo.save( function( err, photo ) {
+				
 				if( err ) res.send( err )			
 			 		console.log("photo price saved")
-				})
-
-				
-				
-				} },
+				})		
+				}
+			},
 				1000)
-			};
+	};
 	return true;
 }
 

@@ -11,6 +11,7 @@ function index ( req, res ) {
 function create( req, res ) {
 	//makes a photo 
 	var photo = new Photo()
+	var newPrice;
 
 	photo.title			= req.body.title
 	photo.caption		= req.body.caption
@@ -22,12 +23,12 @@ function create( req, res ) {
 	photo.currentprice	= req.body.currentprice
 
 
-	photo.save( function( err ) {
-		if( err ) res.send 
+	photo.save( function( err, photo ) {
+		if( err ) res.json({succes:false, message:"Uh oH!"})
+			// photo.counterStart()
 			res.json({success: true, message: "photo created"})
 	})
 }
-
 function show( req, res ) {
 	//gets a single image
 	Photo.findById( req.params.photo_id, function( err, photo ) {
@@ -38,16 +39,19 @@ function show( req, res ) {
 
 function update( req, res ) {
 	//update a photo
-	Photo.findById( req.params.photo_id, function( err, photo) {
+	Photo.findById( req.params.photo_id, function( err, photo ) {
 		if( err ) res.send( err )
 
-		if( req.body.title ) photo.title 	= req.body.title
-		if( req.body.price ) photo.price 	= req.body.price
-		if( req.body.date ) photo.date		= req.body.date
+		if( req.body.title ) photo.title 					= req.body.title
+		if( req.body.currentprice ) photo.currentprice 		= req.body.currentprice
+		if( req.body.startingprice ) photo.startingprice 	= req.body.startingprice
+		if( req.body.date ) photo.date						= req.body.date
 
-		photo.save( function( err ) {
+		photo.save( function( err, photo ) {
 			if( err ) res.send( err )
+			photo.counterStart()
 			res.json( {success: true, message: "photo has been udpated"})
+		console.log("photo price saved")
 		})
 	})
 }

@@ -71,9 +71,9 @@ PhotosController.prototype.buyPhoto = function(id) {
 		console.log(id)
 
 	 vm.$http.patch( "http://localhost:8080/api/photos/" + id,
-	{currentprice: newprice}
+	{currentprice: newprice})
 	
-	})
+	}
 
 }
 

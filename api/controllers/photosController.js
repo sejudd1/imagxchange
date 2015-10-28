@@ -39,7 +39,7 @@ function show( req, res ) {
 
 function update( req, res ) {
 	//update a photo
-	Photo.findById( req.params.photo_id, function( err, photo) {
+	Photo.findById( req.params.photo_id, function( err, photo ) {
 		if( err ) res.send( err )
 
 		if( req.body.title ) photo.title 					= req.body.title

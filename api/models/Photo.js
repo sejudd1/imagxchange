@@ -1,7 +1,8 @@
 var mongoose	= require( 'mongoose' ),
 	photosController = require( '../controllers/photosController'),
-	Schema 		= mongoose.Schema;
-	
+	Schema 		= mongoose.Schema,
+	http        = require('http');
+	// env			= require('../../.env');
 
 // creates an image
 
@@ -28,7 +29,7 @@ PhotoSchema.methods.counterStart = function() {
 				} else {
 				photo.currentprice = (photo.currentprice - 1) 
 
-				console.log("set intervial working")
+				console.log("set interval working")
 				console.log( photo.currentprice )
 
 				photo.pricehistory.push(photo.currentprice)
@@ -44,6 +45,63 @@ PhotoSchema.methods.counterStart = function() {
 	};
 	return true;
 }
+
+//grab the uploaded photo info and append it to the twitter api get request
+PhotoSchema.pre('save', function(next ){
+	var photo = this
+	var options = {
+		hostname: 'https://api.twitter.com/',
+		path: '1.1/search/tweets.json?q=%23' + photo.title,
+		headers: {
+			Authorization: 'Bearer ' + 'AAAAAAAAAAAAAAAAAAAAABWEiQAAAAAAz4Ao8FFUzeFIfGYEclqaSiaXQ3c%3DgEvMMJxJ0xpl5lZspVbEXMoQXEjjXaobFdXpG4XddfWBmkYKNr'
+		}
+
+
+	}
+
+	http.get( options, function(res){
+			console.log("Get Response");
+			console.log(res.statuses[0].created_at)
+			console.log(res.statuses[14].created_at)
+		} ).on('error',  function(e) {
+			console.log("got error");
+	});
+})
+
+
+//grab the tweet mentions 
+
+// PhotoSchema.method.tweetMention = function( http ) {
+// 	var vm = this
+// 	vm.tweets = [];
+// 	var mentions = [];
+
+		
+		// .then(function countMentions (response){
+		// 	var mentions = response.data;
+		// 	console.log(mentions.length)
+			//for(var i = 0; i < mentions.length; i++) {
+				//var numberOfMentions = i.length
+				//i.length.push.mentions
+				//append the name of the picture to the api link in order to get the right celeb
+
+			//}
+		//}
+
+// PhotoSchema.method.tweetPrice = function() {
+// 	var m = (mentions.length/created_at)  
+// 	if( m > .10){
+// 		 m = m * .10
+// 	}else{
+// 		return m;
+// 	}
+// }
+//tweetPrice();
+
+
+//}
+
+	
 
 
 module.exports = mongoose.model( 'Photo', PhotoSchema )

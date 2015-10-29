@@ -47,26 +47,26 @@ PhotoSchema.methods.counterStart = function() {
 }
 
 //grab the uploaded photo info and append it to the twitter api get request
-PhotoSchema.pre('save', function(next ){
-	var photo = this
-	var options = {
-		hostname: 'https://api.twitter.com/',
-		path: '1.1/search/tweets.json?q=%23' + photo.title,
-		headers: {
-			Authorization: 'Bearer ' + 'AAAAAAAAAAAAAAAAAAAAABWEiQAAAAAAz4Ao8FFUzeFIfGYEclqaSiaXQ3c%3DgEvMMJxJ0xpl5lZspVbEXMoQXEjjXaobFdXpG4XddfWBmkYKNr'
-		}
+// PhotoSchema.pre('save', function( next ) {
+// 	var photo   = this
+// 	var options = {
+// 		hostname: 'https://api.twitter.com/',
+// 		path: '1.1/search/tweets.json?q=%23' + photo.title,
+// 		headers: {
+// 			Authorization: 'Bearer ' + 'AAAAAAAAAAAAAAAAAAAAABWEiQAAAAAAz4Ao8FFUzeFIfGYEclqaSiaXQ3c%3DgEvMMJxJ0xpl5lZspVbEXMoQXEjjXaobFdXpG4XddfWBmkYKNr'
+// 		}
 
 
-	}
+// 	}
 
-	http.get( options, function(res){
-			console.log("Get Response");
-			console.log(res.statuses[0].created_at)
-			console.log(res.statuses[14].created_at)
-		} ).on('error',  function(e) {
-			console.log("got error");
-	});
-})
+// 	http.get( options, function( res ) {
+// 			console.log("Get Response");
+// 			console.log(res.statuses[0].created_at)
+// 			console.log(res.statuses[14].created_at)
+// 		} ).on('error',  function(e) {
+// 			console.log("got error");
+// 	});
+// })
 
 
 //grab the tweet mentions 

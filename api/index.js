@@ -7,7 +7,7 @@ var express 		= require( 'express' ),
 	userapiRouter	= require( './routes/userRoutes' ),
 	photoapiRouter	= require( './routes/photoRoutes' ),
 	cors			= require( 'cors' ),
-	path			= require( 'path');
+	path			= require( 'path' );
 
 
 

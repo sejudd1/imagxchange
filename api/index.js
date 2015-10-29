@@ -48,39 +48,6 @@ app.get('/', function(req, res){
 
 // 	var stream = twitter.stream('statuses/filter', { track: 'george clooney' });
 	
-<<<<<<< HEAD
-	//tiddy up tweet data
-	stream.on('tweet', function (tweet) {
-		console.log("magic tweets");
-		var data = {};
-			data.name = tweet.user.name;
-			data.screen_name = tweet.user.screen_name;
-			data.text = tweet.text;
-			data.user_profile_image = tweet.user.profile_image_url;
-			socket.emit('tweets', data);
-			// setTimeout(function) {
-			// 	socket.disconnect("Die")
-			// }, 3000);
-	
-	});
-  });
-});
-=======
-// 	//tiddy up tweet data
-// 	stream.on('tweet', function (tweet) {
-// 		var data = {};
-// 			data.name = tweet.user.name;
-// 			data.screen_name = tweet.user.screen_name;
-// 			data.text = tweet.text;
-// 			data.user_profile_image = tweet.user.profile_image_url;
-// 			socket.emit('tweets', data);
-// 			// setTimeout(function) {
-// 			// 	socket.disconnect("Die")
-// 			// }, 3000);
-// 	console.log(data)
-// 	});
-//   });
-// });
->>>>>>> upstream/master
+
 
 module.exports = app;

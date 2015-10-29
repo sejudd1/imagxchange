@@ -52,7 +52,8 @@ PhotosController.prototype.showPhoto = function(id) {
 
 	var vm = this
 	var id = id
-	 vm.showAnimation = function(){
+	
+	vm.showAnimation = function(){
 			
 			console.log('lets animate')
 			initChart()
@@ -92,38 +93,36 @@ PhotosController.prototype.showPhoto = function(id) {
 
 		function initChart() {
 			console.log("init chart is running" )
-			// yaxis = photo.pricehistory
-			// xaxis = photo.pricehistory.length
-                	 // console.log("faaaad")
-                  //    var data = []
-                  //    for ( var i = 0; i < xaxisdata.length; i++ ) {
-                	 // 	data.push( { position: i, price: yaxisdata[ i ] } ) 
-                	 // }
-                	 // console.log(data)
+			
+            var data = []
+	            for ( var i = 0; i < xaxisdata.length; i++ ) {
+	            data.push( { position: i + "", price: yaxisdata[ i ]  + ""} ) 
+	            }
+	                	 // console.log(data)
                 	 //console.log(xaxisdata)
 
 
-                    var data = [{
-                        "position": "0",
-                        "price": "5"
-                    }, {
-                        "position": "1",
-                        "price": "6"
-                    }, {
-                        "position": "2",
-                        "price": "7"
-                    }, {
-                        "position": "3",
-                        "price": "10"
-                    }, {
-                        "position": "5",
-                        "price": "9"
-                    }, {
-                        "position": "8",
-                        "price": "10"
-                    }];
+                    // var data = [{
+                    //     "position": "0",
+                    //     "price": "5"
+                    // }, {
+                    //     "position": "1",
+                    //     "price": "6"
+                    // }, {
+                    //     "position": "2",
+                    //     "price": "7"
+                    // }, {
+                    //     "position": "3",
+                    //     "price": "10"
+                    // }, {
+                    //     "position": "5",
+                    //     "price": "9"
+                    // }, {
+                    //     "position": "8",
+                    //     "price": "10"
+                    // }];
 
-                    console.log("Initchat:", data)
+                    console.log("Initchart:", data)
                     
                     var vis = d3.select("#visualisation"),
                         WIDTH = 500,
@@ -134,8 +133,8 @@ PhotosController.prototype.showPhoto = function(id) {
                             bottom: 20,
                             left: 50
                         },
-                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([0, 10]),
-                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 10]),
+                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([0, 100]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 100]),
                         xAxis = d3.svg.axis()
                         .scale(xScale),
                         yAxis = d3.svg.axis()

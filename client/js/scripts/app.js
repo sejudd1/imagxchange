@@ -1,5 +1,5 @@
 angular
-	.module('imagXchange', [ 'ui.router'] )
+	.module('imagXchange', [ 'ui.router' ] )
 	.config(interceptor)
 	.config(MainRouter)
 
@@ -47,8 +47,11 @@ function MainRouter($stateProvider, $urlRouterProvider){
 			templateUrl: 'templates/photo.html'
 		})
 		.state('photos', {
-		 	url: '/photos/:id',
-		 	templateUrl: 'templates/photo.html'
+		 	url: '/photos/:photoId',
+		 	templateUrl: 'templates/photo.html',
+		 	controller: function($stateParams){
+      			$stateParams.photoId  
+   			}
 		})
 
 

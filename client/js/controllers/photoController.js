@@ -9,18 +9,10 @@ var yaxisdata = []
 var xaxisdata = []
 var newpass = false
 
-
-
 //refer to the photo module
 function PhotosController( $state, $http ){
 
 	var vm = this
-	//vm.photos = []
-	// vm.photo = {}
-	// console.log("vm photo in controller", vm.photo)
-	// vm.photo.pricehistory = {}
-	// console.log("price history in the controller", vm.photo.pricehistory)
-	// vm.newPhoto = {}
 	vm.$http = $http
 
 	if (newpass === false){
@@ -80,14 +72,10 @@ PhotosController.prototype.showPhoto = function(id) {
 			
 			newpass = true
 
-			initChart();
-			// console.log("yaxis", yaxisdata)
-			// console.log("xaxis", xaxisdata)
-				
+			// window.location.href = "#/photos/" + response.data._id
 
-
-
-			window.location.href = "#/photos/" + response.data._id
+			// .then 
+				// $state.go('photos')
 
 		})
 
@@ -98,29 +86,6 @@ PhotosController.prototype.showPhoto = function(id) {
 	            for ( var i = 0; i < xaxisdata.length; i++ ) {
 	            data.push( { position: i + "", price: yaxisdata[ i ]  + ""} ) 
 	            }
-	                	 // console.log(data)
-                	 //console.log(xaxisdata)
-
-
-                    // var data = [{
-                    //     "position": "0",
-                    //     "price": "5"
-                    // }, {
-                    //     "position": "1",
-                    //     "price": "6"
-                    // }, {
-                    //     "position": "2",
-                    //     "price": "7"
-                    // }, {
-                    //     "position": "3",
-                    //     "price": "10"
-                    // }, {
-                    //     "position": "5",
-                    //     "price": "9"
-                    // }, {
-                    //     "position": "8",
-                    //     "price": "10"
-                    // }];
 
                     console.log("Initchart:", data)
                     
@@ -160,6 +125,7 @@ PhotosController.prototype.showPhoto = function(id) {
                             return yScale(d.price);
                         })
                         .interpolate("basis");
+                       
 
                     vis.append('svg:path')
 
@@ -177,10 +143,6 @@ PhotosController.prototype.showPhoto = function(id) {
              	console.log("vis")
 
                 initChart();
-
-
-
-
 }
 
 PhotosController.prototype.buyPhoto = function(id) {

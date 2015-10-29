@@ -133,8 +133,8 @@ PhotosController.prototype.showPhoto = function(id) {
                             bottom: 20,
                             left: 50
                         },
-                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([0, 100]),
-                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 100]),
+                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([0, xaxisdata.length]),
+                        yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 50]),
                         xAxis = d3.svg.axis()
                         .scale(xScale),
                         yAxis = d3.svg.axis()
@@ -162,12 +162,16 @@ PhotosController.prototype.showPhoto = function(id) {
                         .interpolate("basis");
 
                     vis.append('svg:path')
+
                         .attr('d', lineGen(data))
-                        .attr('stroke', 'green')
-                        .attr('stroke-width', 0)
-                        .transition()
+
+                        .attr('stroke', 'red')
+                        
+                        
                         .attr('stroke-width', 5)
-                        .attr('fill', 'none'); 
+
+                        .attr('fill', 'none') 
+                        
                 }
              	
              	console.log("vis")

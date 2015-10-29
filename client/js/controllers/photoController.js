@@ -17,7 +17,7 @@ function PhotosController( $state, $http ){
 	var vm = this
 
 	//vm.photos = []
-	// vm.photo = {}
+	vm.photo = {}
 	// console.log("vm photo in controller", vm.photo)
 	// vm.photo.pricehistory = {}
 	// console.log("price history in the controller", vm.photo.pricehistory)
@@ -123,6 +123,7 @@ PhotosController.prototype.showPhoto = function(id) {
 	
 
 	var vm = this
+	var id = id
 		
 
 	console.log( "showPhotos function is running", id)

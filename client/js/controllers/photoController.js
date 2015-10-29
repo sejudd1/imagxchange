@@ -15,13 +15,12 @@ var newpass = false
 function PhotosController( $state, $http ){
 
 	var vm = this
-
 	//vm.photos = []
-	vm.photo = {}
+	// vm.photo = {}
 	// console.log("vm photo in controller", vm.photo)
 	// vm.photo.pricehistory = {}
 	// console.log("price history in the controller", vm.photo.pricehistory)
-	vm.newPhoto = {}
+	// vm.newPhoto = {}
 	vm.$http = $http
 
 	if (newpass === false){
@@ -30,11 +29,80 @@ function PhotosController( $state, $http ){
 
 		vm.allPhotos()
 	} 
+}
 
-	function InitChart() {
+//gets all photos 
+PhotosController.prototype.allPhotos = function() {
 
 
+	var vm = this
+
+	
+	vm.$http
+		.get( "http://localhost:8080/api/photos" )
+		.then( response => {
+			vm.all = response.data
+			//console.log(response)
+			console.log("allPhotos is running")
+	})
+}
+
+PhotosController.prototype.showPhoto = function(id) {
+	
+
+	var vm = this
+	var id = id
+	 vm.showAnimation = function(){
+			
+			console.log('lets animate')
+			initChart()
+		};
+
+	console.log( "showPhotos function is running", id)
+
+	vm.$http
+		.get( "http://localhost:8080/api/photos/" + id )
+
+		.then( response => {
+
+			vm.photo = response.data
+			console.log()
+			
+			console.log(vm.photo)
+
+			//yaxisdata = vm.photo.pricehistory
+
+			for (i = 0; i < vm.photo.pricehistory.length; i++){
+				xaxisdata.push(i)
+				yaxisdata.push(vm.photo.pricehistory[i])
+			}
+			
+			newpass = true
+
+			initChart();
+			// console.log("yaxis", yaxisdata)
+			// console.log("xaxis", xaxisdata)
+				
+
+
+
+			window.location.href = "#/photos/" + response.data._id
+
+		})
+
+		function initChart() {
+			console.log("init chart is running" )
+			// yaxis = photo.pricehistory
+			// xaxis = photo.pricehistory.length
                 	 // console.log("faaaad")
+                  //    var data = []
+                  //    for ( var i = 0; i < xaxisdata.length; i++ ) {
+                	 // 	data.push( { position: i, price: yaxisdata[ i ] } ) 
+                	 // }
+                	 // console.log(data)
+                	 //console.log(xaxisdata)
+
+
                     var data = [{
                         "position": "0",
                         "price": "5"
@@ -55,11 +123,11 @@ function PhotosController( $state, $http ){
                         "price": "10"
                     }];
 
-                    // console.log("Initichat:", data)
+                    console.log("Initchat:", data)
                     
                     var vis = d3.select("#visualisation"),
-                        WIDTH = 1000,
-                        HEIGHT = 500,
+                        WIDTH = 500,
+                        HEIGHT = 250,
                         MARGINS = {
                             top: 20,
                             right: 20,
@@ -74,7 +142,7 @@ function PhotosController( $state, $http ){
                         .scale(yScale)
                         .orient("left");
                     
-                    // console.log("vis:", vis)
+                    console.log("vis:", vis)
 
                     vis.append("svg:g")
                         .attr("class", "x axis")
@@ -84,6 +152,7 @@ function PhotosController( $state, $http ){
                         .attr("class", "y axis")
                         .attr("transform", "translate(" + (MARGINS.left) + ",0)")
                         .call(yAxis);
+
                     var lineGen = d3.svg.line()
                         .x(function(d) {
                             return xScale(d.position);
@@ -92,70 +161,22 @@ function PhotosController( $state, $http ){
                             return yScale(d.price);
                         })
                         .interpolate("basis");
+
                     vis.append('svg:path')
                         .attr('d', lineGen(data))
                         .attr('stroke', 'green')
-                        .attr('stroke-width', 2)
+                        .attr('stroke-width', 0)
+                        .transition()
+                        .attr('stroke-width', 5)
                         .attr('fill', 'none'); 
                 }
-                InitChart();	
+             	
+             	console.log("vis")
 
-
-	
-}
-
-//gets all photos 
-PhotosController.prototype.allPhotos = function() {
-
-
-	var vm = this
-
-	vm.$http
-		.get( "http://localhost:8080/api/photos" )
-		.then( response => {
-			vm.all = response.data
-			//console.log(response)
-			console.log("allPhotos is running")
-	})
-}
-
-PhotosController.prototype.showPhoto = function(id) {
-	
-
-	var vm = this
-	var id = id
-		
-
-	console.log( "showPhotos function is running", id)
-
-	vm.$http
-		.get( "http://localhost:8080/api/photos/" + id )
-
-		.then( response => {
-
-		vm.photo = response.data
-		
-		console.log(vm.photo)
-
-		//yaxisdata = vm.photo.pricehistory
-
-			for (i = 0; i < vm.photo.pricehistory.length; i++){
-				xaxisdata.push(i)
-				yaxisdata.push(vm.photo.pricehistory[i])
-			}
-		
-		newpass = true
-
-			console.log(vm.photo)
-			console.log("yaxis", yaxisdata)
-			console.log("xaxis", xaxisdata)
-			
+                initChart();
 
 
 
-		window.location.href = "#/photos/" + response.data._id
-
-		})
 
 }
 

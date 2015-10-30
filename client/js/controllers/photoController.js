@@ -182,6 +182,7 @@ PhotoController.prototype.showPhotos = function(id) {
                             return yScale(d.price);
                         })
                         .interpolate("basis");
+        }
 
 
 PhotosController.prototype.showPhoto = function(id) {

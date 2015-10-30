@@ -91,7 +91,7 @@ function authFactory($http, $q, authTokenFactory){
 		})
 	}
 
-	authFactory.signup = function(email, password){
+	authFactory.signup = function(username, email, password){
 
 		return $http.post('http://localhost:8080/api/users', {
 

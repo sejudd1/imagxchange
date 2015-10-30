@@ -40,7 +40,7 @@ function MainController($state, authFactory, $rootScope, $http){
 
 	function signup(){
 		console.log("Hitting signup")
-		authFactory.signup(vm.user.email, vm.user.password)
+		authFactory.signup(vm.user.username, vm.user.email, vm.user.password)
 
 		.then(function(response){
 			

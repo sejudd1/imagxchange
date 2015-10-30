@@ -1,6 +1,10 @@
 angular
 	.module('imagXchange')
 	.controller('PhotosController', PhotosController);
+    // .config(function($httpProvider) {
+    //         $httpProvider.defaults.useXDomain = true;
+    //         delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    //     });
 //inject the $http
 PhotosController.$inject = [ '$state', '$http' ]
 //PhotosController.$inject = [ 'photosFactory' ]
@@ -8,6 +12,7 @@ PhotosController.$inject = [ '$state', '$http' ]
 var yaxisdata = []
 var xaxisdata = []
 var newpass = false
+
 
 
 
@@ -120,41 +125,55 @@ PhotosController.prototype.allPhotos = function() {
 }
 
 PhotosController.prototype.showPhoto = function(id) {
-	
-
 	var vm = this
-		
-
 	console.log( "showPhotos function is running", id)
-
 	vm.$http
 		.get( "http://localhost:8080/api/photos/" + id )
-
 		.then( response => {
 
-		vm.photo = response.data
-		
-		console.log(vm.photo)
+        	vm.photo = response.data
+        	console.log(vm.photo)  
+        	//yaxisdata = vm.photo.pricehistory
+        	for (i = 0; i < vm.photo.pricehistory.length; i++){
+        		xaxisdata.push(i)
+        		yaxisdata.push(vm.photo.pricehistory[i])
+        	}
+        	
+        	newpass = true
+        		console.log(vm.photo)
+        		console.log("yaxis", yaxisdata)
+        		console.log("xaxis", xaxisdata)
+        	window.location.href = "#/photos/" + response.data._id
+            tweetUpdate(vm)
+        	})
 
-		//yaxisdata = vm.photo.pricehistory
+    function tweetUpdate($httpProvider){
+        // var vm = this
+       
+        console.log("tweet is firing")
+        var req = {
+            method: 'GET',
+            url: 'https://api.twitter.com/1.1/search/tweets.json?q=%23britneyspears',
+            headers: { 
+                'Authorization' : 'Bearer AAAAAAAAAAAAAAAAAAAAABWEiQAAAAAAz4Ao8FFUzeFIfGYEclqaSiaXQ3c%3DgEvMMJxJ0xpl5lZspVbEXMoQXEjjXaobFdXpG4XddfWBmkYKNr'
+            }
+        }  
+        vm.$http(req)
+        .then( function(response){
+            console.log('promise')
+            console.log('time :' + response.data.statuses[14].created_at)
+            console.log('time :' + response.data.statuses[0].created_at)
 
-			for (i = 0; i < vm.photo.pricehistory.length; i++){
-				xaxisdata.push(i)
-				yaxisdata.push(vm.photo.pricehistory[i])
-			}
-		
-		newpass = true
+            var firstTweet = response.data.statuses[14].parseInt.created_at
+            var lastTweet = response.data.statuses[0].parseInt.created_at
 
-			console.log(vm.photo)
-			console.log("yaxis", yaxisdata)
-			console.log("xaxis", xaxisdata)
-			
+            var elapsedtime = parseInt(firstTweet) - parseInt(lastTweet)
+            console.log("difference " + elapsedtime)
 
+        })
+}
 
-
-		window.location.href = "#/photos/" + response.data._id
-
-		})
+    
 
 }
 
@@ -178,6 +197,15 @@ PhotosController.prototype.buyPhoto = function(id) {
 	}
 
 }
+
+     
+
+        
+
+
+    
+
+ 
 
 
 

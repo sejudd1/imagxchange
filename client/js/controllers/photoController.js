@@ -164,8 +164,8 @@ PhotosController.prototype.showPhoto = function(id) {
             console.log('time :' + response.data.statuses[14].created_at)
             console.log('time :' + response.data.statuses[0].created_at)
 
-            var firstTweet = response.data.statuses[14].created_at
-            var lastTweet = response.data.statuses[0].created_at
+            var firstTweet = response.data.statuses[14].parseInt.created_at
+            var lastTweet = response.data.statuses[0].parseInt.created_at
 
             var elapsedtime = parseInt(firstTweet) - parseInt(lastTweet)
             console.log("difference " + elapsedtime)

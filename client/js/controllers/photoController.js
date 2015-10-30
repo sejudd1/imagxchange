@@ -1,7 +1,6 @@
 angular
     .module('imagXchange')
     .controller('PhotoController', PhotoController);
-
 //inject the $http
 PhotoController.$inject = [ '$state', '$http' ]
 //PhotoController.$inject = [ 'photosFactory' ]
@@ -9,6 +8,7 @@ PhotoController.$inject = [ '$state', '$http' ]
 var yaxisdata = []
 var xaxisdata = []
 var newpass = false
+var photo;
 
 
 //refer to the photo module
@@ -71,14 +71,13 @@ PhotoController.prototype.showPhotos = function(id) {
 
 
     var vm = this
-    var id = id
     
     vm.showAnimation = function(){
             
             console.log('lets animate')
             initChart()
         };
-
+   
     console.log( "showPhotos function is running", id)
 
     vm.$http
@@ -104,7 +103,46 @@ PhotoController.prototype.showPhotos = function(id) {
             // console.log("yaxis", yaxisdata)
             // console.log("xaxis", xaxisdata)
                 
+            vm.getTweets = function(){
+            console.log('lets tweet')
+            console.log('tweets:', vm.photo)
+            vm.$http
+            
+            .get("http://localhost:8000/search/" + vm.photo.subject)
+            
+            .then( response => {
 
+            vm.tweets = response.data 
+
+
+            //console.log (response.data)
+            var firsttweet = (vm.tweets.statuses[0].created_at)
+            var lasttweet = (vm.tweets.statuses[9].created_at)
+
+            console.log(firsttweet, lasttweet)
+
+
+            var timeStart = new Date(lasttweet).getTime();
+            var timeEnd = new Date(firsttweet).getTime();
+            var hourDiff = timeEnd - timeStart; //in ms
+            var twitterpriceincrease = ( 100000 / hourDiff )
+            
+            console.log(timeStart)
+            console.log(timeEnd)
+            console.log(hourDiff)
+
+            console.log ("twit price increase",  twitterpriceincrease)
+
+            console.log ("photo current price", vm.photo.currentprice)
+
+
+            var twitterNewPrice = (vm.photo.currentprice + twitterpriceincrease )
+
+            vm.$http.patch( "http://localhost:8080/api/photos/" + id,
+            {currentprice: twitterNewPrice})
+
+                })
+            } 
 
 
             window.location.href = "#/photos/" + response.data._id
@@ -182,59 +220,7 @@ PhotoController.prototype.showPhotos = function(id) {
                             return yScale(d.price);
                         })
                         .interpolate("basis");
-        }
 
-
-PhotoController.prototype.showPhoto = function(id) {
-	var vm = this
-	console.log( "showPhotos function is running", id)
-	vm.$http
-		.get( "http://localhost:8080/api/photos/" + id )
-		.then( response => {
-
-        	vm.photo = response.data
-        	console.log(vm.photo)  
-        	//yaxisdata = vm.photo.pricehistory
-        	for (i = 0; i < vm.photo.pricehistory.length; i++){
-        		xaxisdata.push(i)
-        		yaxisdata.push(vm.photo.pricehistory[i])
-        	}
-        	
-        	newpass = true
-        		console.log(vm.photo)
-        		console.log("yaxis", yaxisdata)
-        		console.log("xaxis", xaxisdata)
-        	window.location.href = "#/photos/" + response.data._id
-            tweetUpdate(vm)
-        	})
-
-    function tweetUpdate($httpProvider){
-        // var vm = this
-       
-        console.log("tweet is firing")
-        var req = {
-            method: 'GET',
-            url: 'https://api.twitter.com/1.1/search/tweets.json?q=%23britneyspears',
-            headers: { 
-                'Authorization' : 'Bearer AAAAAAAAAAAAAAAAAAAAABWEiQAAAAAAz4Ao8FFUzeFIfGYEclqaSiaXQ3c%3DgEvMMJxJ0xpl5lZspVbEXMoQXEjjXaobFdXpG4XddfWBmkYKNr'
-            }
-        }  
-        vm.$http(req)
-        .then( function(response){
-            console.log('promise')
-            console.log('time :' + response.data.statuses[14].created_at)
-            console.log('time :' + response.data.statuses[0].created_at)
-
-            var firstTweet = response.data.statuses[14].parseInt.created_at
-            var lastTweet = response.data.statuses[0].parseInt.created_at
-
-            var elapsedtime = parseInt(firstTweet) - parseInt(lastTweet)
-            console.log("difference " + elapsedtime)
-
-        })
-}
-
-    
 
                     vis.append('svg:path')
 
@@ -262,40 +248,24 @@ PhotoController.prototype.destroy = function(id) {
             console.log("photo deleted")
         })
 
-
 }
 
 PhotoController.prototype.buyPhoto = function(id) {
-	console.log("buy button is hitting")
+    console.log("buy button is hitting")
 
-	var vm = this
+    var vm = this
 
-	console.log(vm.photo)
+    console.log(vm.photo)
 
-	if (vm.photo.currentprice >= vm.photo.startingprice){
+    if (vm.photo.currentprice >= vm.photo.startingprice){
 
-		var newprice = (vm.photo.currentprice + 1)
-		vm.photo.currentprice = newprice
-		console.log(newprice)	
-		console.log(id)
+        var newprice = (vm.photo.currentprice + 1)
+        vm.photo.currentprice = newprice
+        console.log(newprice)   
+        console.log(id)
 
-		vm.$http.patch( "http://localhost:8080/api/photos/" + id,
-		{currentprice: newprice})
-		
-	}
-}
-
-     
-
+        vm.$http.patch( "http://localhost:8080/api/photos/" + id,
+        {currentprice: newprice})
         
-
-
-    
-
- 
-
-
-
-
-
-
+    }
+}

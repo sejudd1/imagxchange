@@ -29,11 +29,12 @@ function create( req, res ) {
     console.log("THIS FUNCTION RIGHT", req.headers)
     var busboy = new Busboy( { headers : req.headers } )
     //A streaming parser for HTML form data
-    
+//console.log('busboy:', busboy);
     req.fields = {}
     busboy.on( "field", function(fieldname, val, fieldnameTruncated, valTruncated) {
         //console.log( "FIELD", fieldname, val )
         req.fields[fieldname] = val
+        console.log('req fields:', req.field)
     })
 
     // Create an Busyboy instance passing the HTTP Request headers.
@@ -45,7 +46,7 @@ function create( req, res ) {
         var extendedName = path.basename( filename ).replace( /\.(?=\w{3,}$)/, moment().format( "[_]YYYY_MM_DD_HH_mm_ss[.]" ) ).replace( /\ /, "")               
         var saveLocation = join( "/Users/Paul/tmp/", extendedName)
         var writeStream = fs.createWriteStream( saveLocation )
-
+        console.log('on file: ', fieldname);
         //pipe method to pipe to the PUT request
         file.pipe( writeStream )
         writeStream.on( "finish", function () {
@@ -65,10 +66,10 @@ function create( req, res ) {
 
     })
 
-busboy.on('finish', function() {
-        // Set Time To Live (TTL) IN database with date-time stamp-->SignedURL needs to be grabbed again * on request and replacesd in the database
-        //addToDataBase( req.fields, req, res )
-    })
+    busboy.on('finish', function() {
+            // Set Time To Live (TTL) IN database with date-time stamp-->SignedURL needs to be grabbed again * on request and replacesd in the database
+            //addToDataBase( req.fields, req, res )
+        })
 
     console.log("Just before the return")
     return req.pipe(busboy)

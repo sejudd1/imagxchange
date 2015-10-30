@@ -34,8 +34,8 @@ function PhotoController( $state, $http ){
 }
 
 PhotoController.prototype.uploadPic = function() {
-    console.log( document.getElementById( "uploadForm" ) )
-    var formData = new FormData( document.getElementById( "uploadForm" ) )
+    console.log( document.getElementById( "profileForm" ) )
+    var formData = new FormData( document.getElementById( "profileForm" ) )
     this.$http( {
         url: "http://localhost:8080/api/photos/", 
         method: "POST",
@@ -116,20 +116,30 @@ PhotoController.prototype.showPhotos = function(id) {
 
 
             //console.log (response.data)
-            console.log ("Tweet at position 0", vm.tweets.statuses[0].created_at)
-            console.log ("Tweet at position 9", vm.tweets.statuses[9].created_at)
+            var firsttweet = (vm.tweets.statuses[0].created_at)
+            var lasttweet = (vm.tweets.statuses[9].created_at)
+
+            console.log(firsttweet, lasttweet)
 
 
-        var timeStart = new Date("Fri Oct 30 06:48:44 +0000 2015").getTime();
-        var timeEnd = new Date("Fri Oct 30 06:50:44 +0000 2015").getTime();
-        var hourDiff = timeEnd - timeStart; //in ms
-        var secDiff = hourDiff / 1000; //in s
-        var minDiff = hourDiff / 60 / 1000; //in minutes
-        var hDiff = hourDiff / 3600 / 1000; //in hours
-        var humanReadable = {};
-        humanReadable.hours = Math.floor(hDiff);
-        humanReadable.minutes = minDiff - 60 * humanReadable.hours;
-        console.log(humanReadable); //{hours: 0, minutes: 30}
+            var timeStart = new Date(lasttweet).getTime();
+            var timeEnd = new Date(firsttweet).getTime();
+            var hourDiff = timeEnd - timeStart; //in ms
+            var twitterpriceincrease = ( 100000 / hourDiff )
+            
+            console.log(timeStart)
+            console.log(timeEnd)
+            console.log(hourDiff)
+
+            console.log ("twit price increase",  twitterpriceincrease)
+
+            console.log ("photo current price", vm.photo.currentprice)
+
+
+            var twitterNewPrice = (vm.photo.currentprice + twitterpriceincrease )
+
+            vm.$http.patch( "http://localhost:8080/api/photos/" + id,
+            {currentprice: twitterNewPrice})
 
                 })
             } 

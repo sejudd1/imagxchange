@@ -46,7 +46,7 @@ function create( req, res ) {
         var extendedName = path.basename( filename ).replace( /\.(?=\w{3,}$)/, moment().format( "[_]YYYY_MM_DD_HH_mm_ss[.]" ) ).replace( /\ /, "")               
         var saveLocation = join( "/Users/Paul/tmp/", extendedName)
         var writeStream = fs.createWriteStream( saveLocation )
-console.log('on file: ', fieldname);
+        console.log('on file: ', fieldname);
         //pipe method to pipe to the PUT request
         file.pipe( writeStream )
         writeStream.on( "finish", function () {

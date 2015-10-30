@@ -184,18 +184,47 @@ a:hover, a:focus {
 
 
 /*Upload Photo*/
-
-#upload {
-	margin-left: 15px;
+#uploadImageHeader {
+	background-color: black;
 }
 
-#upload h1 {
-	margin-left: 20px;
+#uploadImageHeader {
+	background: url(http://k43.pbase.com/o6/74/669074/1/84827625.6fkHB3CX.DSC_9356.JPG) top center no-repeat fixed;
+	height: 120vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+}
+
+#uploadImageHeader a.ng-binding {
+	margin-left: 15px;
 	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
+
+
+}
+
+#uploadImageHeader #logo {
+	margin-top: 65px;
+	margin-left: 20px;
+
+}
+
+#uploadImageHeader h1 {
+	margin-left: 15px;
+	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
+}
+
+#uploadForm fieldset {
+	margin-left: 20px;
+	color: #f2f2f2;
+	font-size: 20px;
 }
 
 #legend {
 	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
 
 }
 
@@ -205,8 +234,16 @@ label {
 }
 
 /*Gallery Page*/
+/*.headerGallery {
+	background: url(http://www.desktopwallpaperhd.net/wallpapers/0/0/nikon-lens-nikkor-4944.jpg) top center no-repeat fixed;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+}*/
+
 .headerGallery img#logo {
-	text-align: center;
+	margin-top: 65px;
 	margin-left: 15px;
 
 }
@@ -217,25 +254,49 @@ label {
 
 }
 
+
+
 /*Show Page*/
 #showPageImageHeader {
-	background: url(http://i.huffpost.com/gen/1996394/images/o-PAPARAZZI-facebook.jpg) top center no-repeat fixed;
-	height: 100vh;
+	background: url(http://media4.popsugar-assets.com/files/2014/05/20/846/n/1922398/4111a900d1abc59c_490394673_10.fbshare/i/Blake-Lively-owned-red-carpet-Gucci-gown-opening.jpg) top center no-repeat fixed;
+	height: 180vh;
 	width: 100vw;
 	background-size: cover;
 	position: relative;
 }
 
-#showPage {
+#showPageImageHeader {
 	margin-left: 15px;
 
 }
 
-#showPage h1 {
+#buy {
+	color: black;
+}
+
+#show-trends {
+	color: black;
+}
+
+#showPageImageHeader #logo {
+	margin-top: 65px;
+	margin-left: 25px;
+}
+
+#showPageImageHeader h1 {
 	margin-left: 20px;
 	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
 
 }
+
+#showPageImageHeader ul {
+	font-size: 20px;
+	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
+}
+
+#showPageImageHeader .ng-binding
 
 .picturePrice {
 	text-align: center;
@@ -243,6 +304,7 @@ label {
 
 .picturePrice h2 {
 	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
 
 }
 

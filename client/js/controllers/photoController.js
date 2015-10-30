@@ -185,7 +185,7 @@ PhotoController.prototype.showPhotos = function(id) {
         }
 
 
-PhotosController.prototype.showPhoto = function(id) {
+PhotoController.prototype.showPhoto = function(id) {
 	var vm = this
 	console.log( "showPhotos function is running", id)
 	vm.$http

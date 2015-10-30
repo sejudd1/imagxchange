@@ -1,4 +1,4 @@
-angular
+ angular
 	.module('imagXchange')
 	.controller('MainController', MainController)
 

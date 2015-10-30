@@ -1,7 +1,7 @@
 
 <div class="navbump"></div>
 
-<section id="profile">
+<section id="upload">
 	<img id="logo" src="../css/assets/images/Logo.png">
 	<h1>imagXchange Upload</h1>
 	<div><a>Hi {{mainCtrl.user.username}}</a></div>
@@ -13,7 +13,7 @@
 			<form name="uploadForm">
 
 				<fieldset>
-					<legend>Upload Photo On Form Submit</legend>
+					<legend id="legend">Upload Photo On Form Submit</legend>
 					  <div>
 					    <label for="newPhoto-Title">Title:</label>
 					    <input type="text" id="newPhoto-name" ng-model="photos.newPhoto.name" placeholder="Title">
@@ -53,21 +53,6 @@
 				<br>
 			</form>
 
-		</div>
-
-		<div class="row">
-			<div class="col-md-6"></div>
-
-			<img id="logo" src="../css/assets/images/Logo.png">
-
-			<div class="picturePrice">
-					$10
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12"></div>
-			<h1>GRAPH</h1>
 		</div>
 
 	</body>

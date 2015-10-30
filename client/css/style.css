@@ -9,7 +9,7 @@ ul {
 }
 a {
 	color: #fff;
-	font-size: 26px;	
+	font-size: 20px;	
 }
 a:hover, a:focus {
 	text-decoration: none;
@@ -23,6 +23,11 @@ a:hover, a:focus {
 	background: rgba( 0,0,0,.7);
 
 	
+}
+
+.navbar-header a {
+	font-family: 'Titillium Web', sans-serif;
+
 }
 
 .navbump {
@@ -173,27 +178,68 @@ a:hover, a:focus {
 	font-family: 'Titillium Web', sans-serif;
 }
 
-/*Profile Upload Photo*/
+/*Upload Photo*/
 
-#profile {
+#upload {
 	margin-left: 15px;
 }
 
-#profile h1 {
+#upload h1 {
 	margin-left: 20px;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+#legend {
+	font-family: 'Titillium Web', sans-serif;
+
+}
+
+label {
+	font-family: 'Titillium Web', sans-serif;
+
+}
+
+/*Gallery Page*/
+.headerGallery img#logo {
+	text-align: center;
+	margin-left: 15px;
+
+}
+
+.headerGallery h1 {
+	font-family: 'Titillium Web', sans-serif;
+	margin-left: 15px;
+
+}
+
+/*Show Page*/
+#showPageImageHeader {
+	background: url(http://i.huffpost.com/gen/1996394/images/o-PAPARAZZI-facebook.jpg) top center no-repeat fixed;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+}
+
+#showPage {
+	margin-left: 15px;
+
+}
+
+#showPage h1 {
+	margin-left: 20px;
+	font-family: 'Titillium Web', sans-serif;
+
 }
 
 .picturePrice {
 	text-align: center;
 }
 
-form .progress {
-	line-height: 15px;
+.picturePrice h2 {
+	font-family: 'Titillium Web', sans-serif;
+
 }
 
 
-/*Profile Upload Photo*/
-#newPhoto {
-    font-size: .55em;
- }
 

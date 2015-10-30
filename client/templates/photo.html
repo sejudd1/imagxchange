@@ -1,31 +1,33 @@
-<div ng-controller="PhotoController as photoCtrl">
+
+<div ng-controller="PhotoController as photoCtrl"></div>
+
+<div class="navbump"></div>
+<div class="container">
+	<h1>imagXchange Photo</h1>
 </div>
 
-<div class="container">
-	<h1>imagXchange Gallery</h1>
-</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6 col-md-4">
+			<ul ng-model="photoCtrl.photo">
 
+				<li>Title: {{photoCtrl.photo.title}}</li>
+				<li>Caption: {{photoCtrl.photo.caption}}</li>
+				<li>Subject: {{photoCtrl.photo.subject}}</li>
+				<li>Location: {{photoCtrl.photo.location}}</li>
+				<li>Date take: {{photoCtrl.photo.datetaken}}</li>
+				<li>Staring price: {{photoCtrl.photo.startingprice}}</li>
+				<li>Current price: {{photoCtrl.photo.currentprice}}</li>
+				<li>Photo id: {{photoCtrl.photo._id}}</li>
+				<li>Photo: <img src="{{photoCtrl.photo.url}}" /></li>
 
-<div class="container">
-	<ul ng-model="photoCtrl.photo">
-
-		<li>Title: {{photoCtrl.photo.title}}</li>
-		<li>Caption: {{photoCtrl.photo.caption}}</li>
-		<li>Subject: {{photoCtrl.photo.subject}}</li>
-		<li>Location: {{photoCtrl.photo.location}}</li>
-		<li>Date take: {{photoCtrl.photo.datetaken}}</li>
-		<li>Staring price: {{photoCtrl.photo.startingprice}}</li>
-		<li>Current price: {{photoCtrl.photo.currentprice}}</li>
-		<li>Photo id: {{photoCtrl.photo._id}}</li>
-		<li>Photo: <img src="{{photoCtrl.photo.url}}" /></li>
-
-		<button id='buy' ng-click="photoCtrl.buyPhoto(photoCtrl.photo._id)">BUY</button>
-		<!-- <button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button> -->
-		<button id='show-trends' ng-click="photoCtrl.showAnimation()">Show Trends</button>
-		<div>
-            <svg id="visualisation" width="500" height="250"></svg>
-        </div>
-
-	</ul>
-	<br>
+				<button id='buy' ng-click="photoCtrl.buyPhoto(photoCtrl.photo._id)">BUY</button>
+				<!-- <button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button> -->
+				<button id='show-trends' ng-click="photoCtrl.showAnimation()">Show Trends</button>
+				<div>
+		            <svg id="visualisation" width="500" height="250"></svg>
+		        </div>
+			</ul>
+		</div>
+	</div>
 </div>

@@ -7,7 +7,7 @@ var express 		= require( 'express' ),
 	userapiRouter	= require( './routes/userRoutes' ),
 	photoapiRouter	= require( './routes/photoRoutes' ),
 	cors			= require( 'cors' ),
-	path			= require( 'path');
+	path			= require( 'path' );
 
 
 
@@ -39,4 +39,10 @@ app.get('/', function(req, res){
 	res.sendfile('index.html');
 });
 
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> upstream/master
 module.exports = app;

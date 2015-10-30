@@ -1,91 +1,148 @@
 angular
-	.module('imagXchange')
-	.controller('PhotosController', PhotosController);
+    .module('imagXchange')
+    .controller('PhotoController', PhotoController);
 //inject the $http
-PhotosController.$inject = [ '$state', '$http' ]
-//PhotosController.$inject = [ 'photosFactory' ]
+PhotoController.$inject = [ '$state', '$http' ]
+//PhotoController.$inject = [ 'photosFactory' ]
 
 var yaxisdata = []
 var xaxisdata = []
 var newpass = false
 
+
+
 //refer to the photo module
-function PhotosController( $state, $http ){
 
-	var vm = this
-	vm.$http = $http
+function PhotoController( $state, $http ){
 
-	if (newpass === false){
 
-		console.log(newpass)
+    var vm = this
+    //vm.photos = []
+    // vm.photo = {}
+    // console.log("vm photo in controller", vm.photo)
+    // vm.photo.pricehistory = {}
+    // console.log("price history in the controller", vm.photo.pricehistory)
+    // vm.newPhoto = {}
+    vm.$http = $http
 
-		vm.allPhotos()
-	} 
+    if (newpass === false){
+
+        console.log(newpass)
+
+        vm.allPhotos()
+    } 
+}
+
+PhotoController.prototype.uploadPic = function() {
+    console.log( document.getElementById( "profileForm" ) )
+    var formData = new FormData( document.getElementById( "profileForm" ) )
+    this.$http( {
+        url: "http://localhost:8080/api/photos/", 
+        method: "POST",
+        data: formData,
+        headers: { 'Content-type' : undefined }    
+    }).then( function ( response ) {
+        var id = response.data.id
+        // I have now got confirmation from server that the picture has been uploaded
+        window.location.href = ("#/gallery/" + response.data._id)
+    })
+    console.log("bananas")
+
 }
 
 //gets all photos 
-PhotosController.prototype.allPhotos = function() {
 
+PhotoController.prototype.allPhotos = function() {
 
-	var vm = this
-
-	
-	vm.$http
-		.get( "http://localhost:8080/api/photos" )
-		.then( response => {
-			vm.all = response.data
-			//console.log(response)
-			console.log("allPhotos is running")
-	})
+    var vm = this
+    
+    vm.$http
+        .get( "http://localhost:8080/api/photos" )
+        .then( response => {
+            vm.all = response.data
+            //console.log(response)
+            console.log("allPhotos is running")
+    })
 }
 
-PhotosController.prototype.showPhoto = function(id) {
-	
 
-	var vm = this
-	var id = id
-	
-	vm.showAnimation = function(){
-			
-			console.log('lets animate')
-			initChart()
-		};
+PhotoController.prototype.showPhotos = function(id) {
+    console.log("Working")
 
-	console.log( "showPhotos function is running", id)
 
-	vm.$http
-		.get( "http://localhost:8080/api/photos/" + id )
+    var vm = this
+    var id = id
+    
+    vm.showAnimation = function(){
+            
+            console.log('lets animate')
+            initChart()
+        };
 
-		.then( response => {
+    console.log( "showPhotos function is running", id)
 
-			vm.photo = response.data
-			console.log()
-			
-			console.log(vm.photo)
+    vm.$http
+        .get( "http://localhost:8080/api/photos/" + id )
 
-			//yaxisdata = vm.photo.pricehistory
+        .then( response => {
 
-			for (i = 0; i < vm.photo.pricehistory.length; i++){
-				xaxisdata.push(i)
-				yaxisdata.push(vm.photo.pricehistory[i])
-			}
-			
-			newpass = true
+            vm.photo = response.data
+            console.log()
+            
+            console.log(vm.photo)
 
-			// window.location.href = "#/photos/" + response.data._id
+            //yaxisdata = vm.photo.pricehistory
 
-			// .then 
-				// $state.go('photos')
+            for (i = 0; i < vm.photo.pricehistory.length; i++){
+                xaxisdata.push(i)
+                yaxisdata.push(vm.photo.pricehistory[i])
+            }
+            
+            newpass = true
 
-		})
+            initChart();
+            // console.log("yaxis", yaxisdata)
+            // console.log("xaxis", xaxisdata)
+                
 
-		function initChart() {
-			console.log("init chart is running" )
-			
+
+
+            window.location.href = "#/photos/" + response.data._id
+
+        })
+}
+
+
+        function initChart() {
+            console.log("init chart is running" )
+            
             var data = []
-	            for ( var i = 0; i < xaxisdata.length; i++ ) {
-	            data.push( { position: i + "", price: yaxisdata[ i ]  + ""} ) 
-	            }
+                for ( var i = 0; i < xaxisdata.length; i++ ) {
+                data.push( { position: i + "", price: yaxisdata[ i ]  + ""} ) 
+                }
+                         // console.log(data)
+                     //console.log(xaxisdata)
+
+
+                    // var data = [{
+                    //     "position": "0",
+                    //     "price": "5"
+                    // }, {
+                    //     "position": "1",
+                    //     "price": "6"
+                    // }, {
+                    //     "position": "2",
+                    //     "price": "7"
+                    // }, {
+                    //     "position": "3",
+                    //     "price": "10"
+                    // }, {
+                    //     "position": "5",
+                    //     "price": "9"
+                    // }, {
+                    //     "position": "8",
+                    //     "price": "10"
+                    // }];
 
                     console.log("Initchart:", data)
                     
@@ -125,7 +182,6 @@ PhotosController.prototype.showPhoto = function(id) {
                             return yScale(d.price);
                         })
                         .interpolate("basis");
-                       
 
                     vis.append('svg:path')
 
@@ -139,13 +195,23 @@ PhotosController.prototype.showPhoto = function(id) {
                         .attr('fill', 'none') 
                         
                 }
-             	
-             	console.log("vis")
+                 
+                 console.log("vis")
 
-                initChart();
+
+
+PhotoController.prototype.destroy = function(id) {
+    console.log("delete button is hitting")
+    var vm = this
+    vm.$http.delete("http://localhost:8080/api/photos/" + id)
+        .then( function( response ){
+            //remove the photo with 'id' from the DOM
+            console.log("photo deleted")
+        })
+
 }
 
-PhotosController.prototype.buyPhoto = function(id) {
+PhotoController.prototype.buyPhoto = function(id) {
 	console.log("buy button is hitting")
 
 	var vm = this
@@ -159,11 +225,10 @@ PhotosController.prototype.buyPhoto = function(id) {
 		console.log(newprice)	
 		console.log(id)
 
-	 vm.$http.patch( "http://localhost:8080/api/photos/" + id,
-	{currentprice: newprice})
-	
+		vm.$http.patch( "http://localhost:8080/api/photos/" + id,
+		{currentprice: newprice})
+		
 	}
-
 }
 
 

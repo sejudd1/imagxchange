@@ -167,3 +167,15 @@ form .progress {
 	background: gray;
 	width: 0;
 }
+
+/*Profile Upload Photo*/
+#newPhoto {
+    font-size: .55em;
+
+}
+#profile{
+    font-size: .55em;
+}
+#profileForm{
+    font-size: .55em;
+}

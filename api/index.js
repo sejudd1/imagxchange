@@ -39,7 +39,10 @@ app.get('/', function(req, res){
 	res.sendfile('index.html');
 });
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> upstream/master
 module.exports = app;

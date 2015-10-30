@@ -162,33 +162,8 @@ a:hover, a:focus {
 	position: relative;
 } 
 
-<<<<<<< HEAD
-/*contact page*/
 
-
-
-
-/*Jumbotron*/
-=======
-.signUpheardImg #img {
-	height: 840px;
-
-}
-
-.signUpheaderImg .overlay {
-	width: 100%;
-	height: 100%;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;0+0,0.35+100 */
-	background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.35))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#59000000',GradientType=0 ); /* IE6-9 */
-}
->>>>>>> newtweet
-
+/*jumbotron*/
 .jumbotron {
 	background: rgba( 255, 255, 255, .3 );
 	width: 100%;
@@ -199,8 +174,7 @@ a:hover, a:focus {
 }
 
 /*Profile Upload Photo*/
-<<<<<<< HEAD
-=======
+
 #profile {
 	margin-left: 15px;
 }
@@ -212,17 +186,14 @@ a:hover, a:focus {
 .picturePrice {
 	text-align: center;
 }
-.thumb {
-	width: 24px;
-	height: 24px;
-	float: none;
-	position: relative;
-	top: 7px;
-}
->>>>>>> newtweet
 
 form .progress {
 	line-height: 15px;
 }
 
+
+/*Profile Upload Photo*/
+#newPhoto {
+    font-size: .55em;
+ }
 

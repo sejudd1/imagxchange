@@ -8,7 +8,7 @@ PhotoController.$inject = [ '$state', '$http' ]
 var yaxisdata = []
 var xaxisdata = []
 var newpass = false
-
+var photo;
 
 
 //refer to the photo module
@@ -71,14 +71,13 @@ PhotoController.prototype.showPhotos = function(id) {
 
 
     var vm = this
-    var id = id
     
     vm.showAnimation = function(){
             
             console.log('lets animate')
             initChart()
         };
-
+   
     console.log( "showPhotos function is running", id)
 
     vm.$http
@@ -104,7 +103,36 @@ PhotoController.prototype.showPhotos = function(id) {
             // console.log("yaxis", yaxisdata)
             // console.log("xaxis", xaxisdata)
                 
+            vm.getTweets = function(){
+            console.log('lets tweet')
+            console.log('tweets:', vm.photo)
+            vm.$http
+            
+            .get("http://localhost:8000/search/" + vm.photo.subject)
+            
+            .then( response => {
 
+            vm.tweets = response.data 
+
+
+            //console.log (response.data)
+            console.log ("Tweet at position 0", vm.tweets.statuses[0].created_at)
+            console.log ("Tweet at position 9", vm.tweets.statuses[9].created_at)
+
+
+        var timeStart = new Date("Fri Oct 30 06:48:44 +0000 2015").getTime();
+        var timeEnd = new Date("Fri Oct 30 06:50:44 +0000 2015").getTime();
+        var hourDiff = timeEnd - timeStart; //in ms
+        var secDiff = hourDiff / 1000; //in s
+        var minDiff = hourDiff / 60 / 1000; //in minutes
+        var hDiff = hourDiff / 3600 / 1000; //in hours
+        var humanReadable = {};
+        humanReadable.hours = Math.floor(hDiff);
+        humanReadable.minutes = minDiff - 60 * humanReadable.hours;
+        console.log(humanReadable); //{hours: 0, minutes: 30}
+
+                })
+            } 
 
 
             window.location.href = "#/photos/" + response.data._id

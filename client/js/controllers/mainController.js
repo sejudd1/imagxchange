@@ -2,10 +2,14 @@ angular
 	.module('imagXchange')
 	.controller('MainController', MainController)
 
-MainController.$inject = ['$state', 'authFactory', '$rootScope']
+MainController.$inject = ['$state', 'authFactory', '$rootScope', '$http']
 
-function MainController($state, authFactory, $rootScope){
-	
+function MainController($state, authFactory, $rootScope, $http){
+	console.log('maincontroller is loading')
+	$http.get('http://localhost:8000/search/Kesha?count=10').then(function(data){
+		console.log(data);
+	})
+
 	var vm = this
 	vm.user = {}
 	vm.loggedIn = null

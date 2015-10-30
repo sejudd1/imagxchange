@@ -1,11 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+
 /*General*/
 ul {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	font-family: 'Titillium Web', sans-serif;
 }
 a {
-	color: #fff;	
+	color: #fff;
+	font-size: 26px;	
 }
 a:hover, a:focus {
 	text-decoration: none;
@@ -17,6 +21,8 @@ a:hover, a:focus {
 .navbar {
 	margin: 0;
 	background: rgba( 0,0,0,.7);
+
+	
 }
 
 .navbump {
@@ -26,7 +32,7 @@ a:hover, a:focus {
 /*home*/
 
 .homeHeaderImg {
-	background: url( http://d2bdzzc4h8xl0w.cloudfront.net/wp-content/uploads/skinwerein/2014/02/Fotolia_27834894_Subscription_XL.jpg?d77620 ) top center no-repeat fixed;
+	background: url( https://easybookinggroup.files.wordpress.com/2014/11/cannes-film-festival.jpg ) top center no-repeat fixed;
 	height: 100vh;
 	width: 100vw;
 	background-size: cover;
@@ -73,6 +79,7 @@ a:hover, a:focus {
 	margin-left: -115px;			
 	opacity: 1;
 	top: 300px;
+	font-family: 'Titillium Web', sans-serif;
 	animation-name: moveHeaderText;
 	animation-duration: 1.5s;
 	animation-iteration-count: 1;
@@ -99,6 +106,7 @@ a:hover, a:focus {
 	left: 40%;
 	font-size: 36px;
 	bottom: 100px;
+	font-family: 'Titillium Web', sans-serif;
 }
 .homeHeaderImg > ul > li:nth-child(2) {
 	position: absolute;
@@ -106,6 +114,7 @@ a:hover, a:focus {
 	font-size: 36px;
 	margin-left: -20px;
 	bottom: 100px;
+	font-family: 'Titillium Web', sans-serif;
 }
 .homeHeaderImg a {
 	transition: all ease .5s;
@@ -127,21 +136,38 @@ a:hover, a:focus {
 }
 
 /*Login */
-.row  {
+.rowLogin  {
 	margin-top: 50px;
 	
 } 
 
+.logInHeaderImg {
+	background: url( https://easybookinggroup.files.wordpress.com/2014/11/cannes-film-festival.jpg ) top center no-repeat fixed;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+}
 
 /*Sign Up*/
+.rowSignUp {
+	margin-top: 50px;
+}
 
-.signUpheaderImg {
-	background: url( https://easybookinggroup.files.wordpress.com/2014/11/cannes-film-festival.jpg) top center no-repeat fixed;
+.signUpHeaderImg {
+	background: url( https://easybookinggroup.files.wordpress.com/2014/11/cannes-film-festival.jpg ) top center no-repeat fixed;
 	height: 100vh;
 	width: 100vw;
 	background-size: cover;
 	position: relative;
 } 
+
+/*contact page*/
+
+
+
+
+/*Jumbotron*/
 
 .jumbotron {
 	background: rgba( 255, 255, 255, .3 );
@@ -149,29 +175,13 @@ a:hover, a:focus {
 	border-radius: 0;
 	border: 1px solid #fff;
 	color: #000;
+	font-family: 'Titillium Web', sans-serif;
 }
 
 /*Profile Upload Photo*/
-.thumb {
-	width: 24px;
-	height: 24px;
-	float: none;
-	position: relative;
-	top: 7px;
-}
 
 form .progress {
 	line-height: 15px;
 }
 
-.progress {
-	display: inline-block;
-	width: 100px;
-	border: 3px groove #CCC;
-}
 
-.progress div {
-	font-size: smaller;
-	background: gray;
-	width: 0;
-}

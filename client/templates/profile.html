@@ -6,7 +6,7 @@
 	<h1>imagXchange Upload</h1>
 	<div><a>Hi {{mainCtrl.user.username}}</a></div>
 		<!-- Upload form on submit button click -->
-	<body ng-app="imagXchange" ng-controller="UserPhotosController as photoCtrl">
+	<body ng-app="imagXchange" ng-controller="PhotoController as photoCtrl">
 		<div class="row">
 			<div class="col-md-6">
   			
@@ -41,7 +41,7 @@
 					  <img ng-show="uploadForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
 					  <br>
 					  <button ng-disabled="!uploadForm.$valid"
-					  		  ng-click="uploadPic(picFile)">Submit</button>
+					  		  ng-click="photoCtrl.uploadPic(picFile)">Submit</button>
 					  <span class="progress" ng-show="picFile.progress >= 0">
 					  	<div style="width:{{picFile.progress}}%"
 					  		ng-blind="picFile.progress + '%'"></div>

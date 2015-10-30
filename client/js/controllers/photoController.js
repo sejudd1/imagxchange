@@ -113,36 +113,14 @@ PhotoController.prototype.showPhotos = function(id) {
 }
 
 
-        function initChart() {
+    function initChart() {
             console.log("init chart is running" )
             
             var data = []
                 for ( var i = 0; i < xaxisdata.length; i++ ) {
                 data.push( { position: i + "", price: yaxisdata[ i ]  + ""} ) 
                 }
-                         // console.log(data)
-                     //console.log(xaxisdata)
-
-
-                    // var data = [{
-                    //     "position": "0",
-                    //     "price": "5"
-                    // }, {
-                    //     "position": "1",
-                    //     "price": "6"
-                    // }, {
-                    //     "position": "2",
-                    //     "price": "7"
-                    // }, {
-                    //     "position": "3",
-                    //     "price": "10"
-                    // }, {
-                    //     "position": "5",
-                    //     "price": "9"
-                    // }, {
-                    //     "position": "8",
-                    //     "price": "10"
-                    // }];
+        
 
                     console.log("Initchart:", data)
                     
@@ -182,10 +160,22 @@ PhotoController.prototype.showPhotos = function(id) {
                             return yScale(d.price);
                         })
                         .interpolate("basis");
-        }
 
+                    vis.append('svg:path')
 
-PhotosController.prototype.showPhoto = function(id) {
+                        .attr('d', lineGen(data))
+
+                        .attr('stroke', 'red')
+                        
+                        
+                        .attr('stroke-width', 5)
+
+                        .attr('fill', 'none') 
+                        
+    }
+                 
+
+PhotoController.prototype.showPhoto = function(id) {
 	var vm = this
 	console.log( "showPhotos function is running", id)
 	vm.$http
@@ -206,7 +196,10 @@ PhotosController.prototype.showPhoto = function(id) {
         		console.log("xaxis", xaxisdata)
         	window.location.href = "#/photos/" + response.data._id
             tweetUpdate(vm)
+
         	})
+
+}
 
     function tweetUpdate($httpProvider){
         // var vm = this
@@ -232,25 +225,7 @@ PhotosController.prototype.showPhoto = function(id) {
             console.log("difference " + elapsedtime)
 
         })
-}
-
-    
-
-                    vis.append('svg:path')
-
-                        .attr('d', lineGen(data))
-
-                        .attr('stroke', 'red')
-                        
-                        
-                        .attr('stroke-width', 5)
-
-                        .attr('fill', 'none') 
-                        
-                }
-                 
-                 console.log("vis")
-
+    }
 
 
 PhotoController.prototype.destroy = function(id) {

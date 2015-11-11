@@ -1,0 +1,50 @@
+
+<div class="navbump"></div>
+
+<section id="showPageImageHeader">
+	<img id="logo" src="../css/assets/images/Logo.png">
+	<h1>imagXchange Show Page</h1>
+	<body ng-app="imagXchange" ng-controller="PhotoController as photoCtrl">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6 col-md-4">
+					<ul ng-model="photoCtrl.photo">
+
+						<li>Title: {{photoCtrl.photo.title}}</li>
+						<li>Caption: {{photoCtrl.photo.caption}}</li>
+						<li>Subject: {{photoCtrl.photo.subject}}</li>
+						<li>Location: {{photoCtrl.photo.location}}</li>
+						<li>Date take: {{photoCtrl.photo.datetaken}}</li>
+						<li>Staring price: {{photoCtrl.photo.startingprice}}</li>
+						<li>Current price: {{photoCtrl.photo.currentprice}}</li>
+						<li>Photo id: {{photoCtrl.photo._id}}</li>
+						<li>Photo: <img src="{{photoCtrl.photo.url}}" /></li>
+
+						<button id='buy' ng-click="photoCtrl.buyPhoto(photoCtrl.photo._id)">BUY</button>
+						<button id='show-trends' ng-click="photoCtrl.showAnimation()">Show Trends</button>
+						<button class='delete' ng-click="photos.deletePhoto(photo)">Delete</button>
+						<button id='poll-tweets' ng-click="photoCtrl.getTweets()">Get Tweets</button>
+						<div class="row">
+							<div class="col-md-12">
+							<h1>GRAPH</h1>
+							<svg id="visualisation" width="500" height="250"></svg>
+							</div>
+						</div>
+					</ul>
+					
+				</div>
+			
+				<div class="col-md-6">
+
+					<img id="showPhoto" src="{{photoCtrl.photo.url}}">
+
+				</div>
+
+				<div class="picturePrice">
+						<h2>Current price: {{photoCtrl.photo.currentprice}}</h2>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</section>

@@ -1,0 +1,358 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+
+/*General*/
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	font-family: 'Titillium Web', sans-serif;
+}
+a {
+	color: #fff;
+	font-size: 20px;	
+}
+a:hover, a:focus {
+	text-decoration: none;
+	color: #ccc;
+}
+
+/*Nav*/
+
+.navbar {
+	margin: 0;
+	background: rgba( 0,0,0,.7);
+
+	
+}
+
+.navbar-header a {
+	font-family: 'Titillium Web', sans-serif;
+
+}
+
+.navbump {
+	/*height: 80px;*/
+}
+
+/*home*/
+
+.homeHeaderImg {
+	background: url( https://easybookinggroup.files.wordpress.com/2014/11/cannes-film-festival.jpg ) top center no-repeat fixed;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+}
+
+.homeHeaderImg > #logo {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 50%;
+	margin-left: -115px;			
+	opacity: 1;
+	top: 70px;
+	animation-name: moveHeaderText;
+	animation-duration: 1.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease;
+
+}
+
+@keyframes moveHeaderImage {
+	0% {
+		left: -350px;
+		opacity: 0;			
+	}
+	10% {
+		left: -350px;
+		opacity: 0;			
+	}
+	100% {
+		left: 50%;
+		margin-left: -115px;			
+		opacity: 1;
+	}
+}
+
+.homeHeaderImg > h1 {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	color: #f2f2f2;
+	left: 50%;
+	margin-left: -115px;			
+	opacity: 1;
+	top: 300px;
+	font-family: 'Titillium Web', sans-serif;
+	animation-name: moveHeaderText;
+	animation-duration: 1.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease;
+}
+@keyframes moveHeaderText {
+	0% {
+		left: -350px;
+		opacity: 0;			
+	}
+	10% {
+		left: -350px;
+		opacity: 0;			
+	}
+	100% {
+		left: 50%;
+		margin-left: -115px;			
+		opacity: 1;
+	}
+}
+
+.homeHeaderImg > ul > li:nth-child(1) a {
+	position: absolute;
+	left: 40%;
+	font-size: 36px;
+	bottom: 100px;
+	font-family: 'Titillium Web', sans-serif;
+}
+.homeHeaderImg > ul > li:nth-child(2) a {
+	position: absolute;
+	right: 40%;
+	font-size: 36px;
+	margin-left: -20px;
+	bottom: 100px;
+	font-family: 'Titillium Web', sans-serif;
+}
+.homeHeaderImg a {
+	transition: all ease .5s;
+}
+.homeHeaderImg a:hover {
+	transform: scale( 1.1 );
+}
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;0+0,0.35+100 */
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.35))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#59000000',GradientType=0 ); /* IE6-9 */
+}
+
+/*Login */
+.Login  {
+	margin-top: 5px;
+	
+} 
+
+.logInHeaderImg {
+	background: url( https://easybookinggroup.files.wordpress.com/2014/11/cannes-film-festival.jpg ) top center no-repeat fixed;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+}
+
+/*Sign Up*/
+.SignUp {
+	margin-top: 5px;
+}
+
+.signUpHeaderImg {
+	background: url( https://easybookinggroup.files.wordpress.com/2014/11/cannes-film-festival.jpg ) top center no-repeat fixed;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+} 
+
+
+/*jumbotron*/
+.jumbotron {
+	background: rgba( 255, 255, 255, .3 );
+	width: 100%;
+	height: 90vh;
+	margin-top: 50px;
+	border-radius: 0;
+	border: 1px solid #fff;
+	color: #000;
+	font-family: 'Titillium Web', sans-serif;
+	overflow: scroll;
+}
+
+
+/*Upload Photo*/
+#uploadImageHeader {
+	background-color: black;
+}
+
+#uploadImageHeader {
+	background: url(http://k43.pbase.com/o6/74/669074/1/84827625.6fkHB3CX.DSC_9356.JPG) top center no-repeat fixed;
+	height: 160vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+}
+
+#uploadImageHeader a.ng-binding {
+	margin-left: 15px;
+	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
+
+
+}
+
+#uploadImageHeader #logo {
+	margin-top: 65px;
+	margin-left: 20px;
+
+}
+
+#uploadImageHeader h1 {
+	margin-left: 15px;
+	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
+}
+
+#uploadForm fieldset {
+	margin-left: 20px;
+	color: #f2f2f2;
+	font-size: 20px;
+}
+
+#legend {
+	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
+
+}
+
+label {
+	font-family: 'Titillium Web', sans-serif;
+
+}
+
+/*Gallery Page*/
+/*.headerGallery {
+	background: url(http://www.desktopwallpaperhd.net/wallpapers/0/0/nikon-lens-nikkor-4944.jpg) top center no-repeat fixed;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+}*/
+
+.headerGallery img#logo {
+	margin-top: 65px;
+	margin-left: 15px;
+
+}
+
+.headerGallery h1 {
+	font-family: 'Titillium Web', sans-serif;
+	margin-left: 15px;
+
+}
+
+
+
+/*Show Page*/
+#showPageImageHeader {
+	background: url(http://media4.popsugar-assets.com/files/2014/05/20/846/n/1922398/4111a900d1abc59c_490394673_10.fbshare/i/Blake-Lively-owned-red-carpet-Gucci-gown-opening.jpg) top center no-repeat fixed;
+	height: 180vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+}
+
+#showPageImageHeader {
+	margin-left: 15px;
+
+}
+
+#buy {
+	color: black;
+}
+
+#show-trends {
+	color: black;
+}
+
+#poll-tweets{
+	color: black;
+}
+
+.delete{
+	color: black;
+}
+
+#showPageImageHeader #logo {
+	margin-top: 65px;
+	margin-left: 25px;
+}
+
+#showPageImageHeader h1 {
+	margin-left: 20px;
+	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
+
+}
+
+#showPageImageHeader ul {
+	font-size: 20px;
+	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
+}
+
+#showPageImageHeader .ng-binding
+
+.picturePrice {
+	text-align: center;
+}
+
+.picturePrice h2 {
+	font-family: 'Titillium Web', sans-serif;
+	color: #f2f2f2;
+
+}
+
+#visualisation {
+	opacity: -7px;
+}
+
+.contact { 
+	
+	background: url(http://pauleannareid.com/wp-content/uploads/2014/08/paparazzi-red-carpet-background-9.jpg) top center no-repeat fixed;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;	
+
+}
+.contact #logo {
+	position: absolute;
+	top: 20vh;
+	left: 50%;
+	margin-left: -115.5px;
+	z-index: 30;
+
+}
+
+.contact > h1{
+	margin-top: 80px;
+	font-size: 50px;
+	margin-left: 35px;
+	color: #f2f2f2;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.contact > p {
+	margin-top: 90px;
+	margin-left: 35px;
+	color: #f2f2f2;
+	font-size: 36px;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+
